@@ -14,7 +14,7 @@ using ImageGear.Processing;
 using ImageGear.Display;
 using VB6 = Microsoft.VisualBasic.Compatibility.VB6.Support;
 using Microsoft.VisualBasic.Devices;
-using ReadQR;
+//using ReadQR;
 
 
 namespace DocEntry
@@ -48,22 +48,22 @@ namespace DocEntry
             //'asClasses)
             //Module1.goPropDescs = (IDMObjects.PropertyDescriptions)Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, asClasses);
             Module1.goPropDescs = Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, asClasses);
-            IDMListView1.ClearColumnHeaders(Module1.oLibrary);
-            IDMListView1.ClearItems();
+            //IDMListView1.ClearColumnHeaders(Module1.oLibrary);
+            //IDMListView1.ClearItems();
             foreach (IDMObjects.PropertyDescription oPropDesc in Module1.goPropDescs)
             {
                 if (oPropDesc.Name.Substring(0, Math.Min(oPropDesc.Name.Length, 2)) != "F_" && (oPropDesc.Name == "UOC" || oPropDesc.Name == "Folio" || oPropDesc.Name == "Contrato" || oPropDesc.Name == "NumCliente" || oPropDesc.Name == "Linea" || oPropDesc.Name == "TipoDoc" || oPropDesc.Name == "FolioS403" || oPropDesc.Name == "Producto" || oPropDesc.Name == "Instrumento" || oPropDesc.Name == "XfolioS" || oPropDesc.Name == "CalificaOnDemand"))
                 {
                     if (Bande == 0)
                     {
-                        IDMListView1.AddColumnHeader(Module1.oLibrary, oPropDesc, Type.Missing, Type.Missing, Type.Missing);
+                        //IDMListView1.AddColumnHeader(Module1.oLibrary, oPropDesc, Type.Missing, Type.Missing, Type.Missing);
                         cHeadings.Add(oPropDesc.Label, null, null, null);
                         cPropNames.Add(oPropDesc.Name, null, null, null);
                     }
                 }
             }
             Bande = 1;
-            IDMListView1.SwitchColumnHeaders(Module1.oLibrary);
+            //IDMListView1.SwitchColumnHeaders(Module1.oLibrary);
         }
 
         private void Valida_Controles()
@@ -275,11 +275,13 @@ namespace DocEntry
                             {
                                 Computer MyComputer = new Computer();
                                 MyComputer.FileSystem.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath) + "\\ReadQR";
+                                /*
                                 ReadQR.Program.TipoConvPDF = ReadQR.Program.ArchivePDFtoArchiveTiff;
                                 ReadQR.Program.ArchivePDForTIFF = CommonDialog1.FileName.Trim();
                                 ReadQR.Program.RutaAppWork = Path.GetDirectoryName(Application.ExecutablePath) + "\\ReadQR";
                                 ReadQR.Program.ProcessQRs = 1;
                                 ReadQR.Program.MuestraForma();  
+                                */
                                 MyComputer.FileSystem.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath);
                                 string temp = CommonDialog1.SafeFileName.Substring(0, CommonDialog1.SafeFileName.Length - 3) + "tif";
                                 temp = Module1.TmpImg + "ImgWork\\" + temp;
@@ -294,6 +296,7 @@ namespace DocEntry
                             if (ImgScan1.Image != string.Empty) {
                                 ImgScan1.Image = string.Empty;
                             }
+                            /*
                             if ( ViewerCtrl2.Visible ==  false)
                             {
                                 ViewerCtrl1.PageNumber = 1;
@@ -309,7 +312,7 @@ namespace DocEntry
                                 ViewerCtrl2.PageNumber = 1;
                                 Module1.XArchivo = Module1.TmpImg + "img2.tif";
                             }
-
+                            */
                             if (File.Exists(Module1.XArchivo))
                             {                                
                                 try { File.Delete(Module1.XArchivo); }
@@ -392,7 +395,7 @@ namespace DocEntry
                                     viewImage1.pArchivo = Module1.TmpImg + "VisalImg.tmp";
                                     viewImage1.LoadDocument();
                                     
-                                    ViewerCtrl1.DocumentFilename = "";
+                                    /*ViewerCtrl1.DocumentFilename = "";
                                     ViewerCtrl1.BeginInit();
                                     ViewerCtrl1.Clear();
                                     ViewerCtrl1.PageNumber = 1;                                     
@@ -401,7 +404,7 @@ namespace DocEntry
                                     ViewerCtrl1.Rotation = 0;
                                     //ViewerCtrl1.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
                                     ViewerCtrl1.Refresh();
-
+                                    */
                                     if (Module1.TipoOper != 7)
                                     {
                                         AdjustButtons(0);
@@ -419,6 +422,7 @@ namespace DocEntry
                                 {
                                     if (File.Exists(Module1.XArchivo))
                                     {
+                                        /*
                                         ViewerCtrl2.DocumentFilename = "";
                                         ViewerCtrl2.BeginInit();
                                         ViewerCtrl2.Clear();
@@ -428,6 +432,7 @@ namespace DocEntry
                                         ViewerCtrl2.Rotation = 0;
                                         //ViewerCtrl2.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
                                         ViewerCtrl2.Refresh();
+                                        */
                                         BtnOkInserta.Enabled = true;
                                         BtnCancelar.Enabled = true;
                                     }
@@ -509,32 +514,32 @@ namespace DocEntry
 
         private void AdjustButtons(int DocInx)
         {
-            if (ViewerCtrl1.IsOperationSupported(IDMViewerCtrl.idmDocumentOperation.idmOpZoomInOut))
+            //if (ViewerCtrl1.IsOperationSupported(IDMViewerCtrl.idmDocumentOperation.idmOpZoomInOut))
             {
                 BtnZoomIn.Enabled = true;
                 BtnZoomOut.Enabled = true;
                 BtnRotateLeft.Enabled = true;
                 BtnRotate.Enabled = true;
             }
-            else
+            //else
             {
                 BtnZoomIn.Enabled = false;
                 BtnZoomOut.Enabled = false;
                 BtnRotateLeft.Enabled = false;
                 BtnRotate.Enabled = false;
             }
-            BtnRotate.Enabled = ViewerCtrl1.IsOperationSupported(IDMViewerCtrl.idmDocumentOperation.idmOpRotation);
+            //BtnRotate.Enabled = ViewerCtrl1.IsOperationSupported(IDMViewerCtrl.idmDocumentOperation.idmOpRotation);
             BtnDone.Enabled = true;
             BtnPrint.Enabled = true;
             //AVG Ini Setp-2015
             BtnSaveas.Enabled = true;
             //AVG Fin Setp-2015
-            int Pag = ViewerCtrl1.Pages.Count;
-            if (Pag > 1)
+            //int Pag = ViewerCtrl1.Pages.Count;
+            //if (Pag > 1)
             {
                BtnDeletePage.Enabled = true;
             }
-            else
+            //else
             {
                BtnDeletePage.Enabled = false;
             }
@@ -675,7 +680,7 @@ namespace DocEntry
                 }
                 if (!Module1.goPropDescs["F_PAGES"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
-                    Module1.oDocument.Properties[Module1.goPropDescs["F_PAGES"].Name].Value = ViewerCtrl1.Pages.Count;
+                    //Module1.oDocument.Properties[Module1.goPropDescs["F_PAGES"].Name].Value = ViewerCtrl1.Pages.Count;
                 }
                 //AVG Ini Sept-2015
                 if (!Module1.goPropDescs["XfolioP"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -753,6 +758,7 @@ namespace DocEntry
                     //if (File.Exists(Module1.DocList[inx].fileName))
                     if (File.Exists(Module1.XArchivo))
                     {
+                        /*
                         ViewerCtrl1.BeginInit();
                         ViewerCtrl1.Clear();
                         ViewerCtrl1.PageNumber = 1;
@@ -761,6 +767,7 @@ namespace DocEntry
                         ViewerCtrl1.Rotation = 0;
                         //ViewerCtrl1.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
                         ViewerCtrl1.Refresh();
+                        */
                         BandeInsert = 1;                     
                     }
                     break;
@@ -770,6 +777,7 @@ namespace DocEntry
                     {
                         if (File.Exists(Module1.XArchivo))
                         {
+                            /*
                             ViewerCtrl2.BeginInit();
                             ViewerCtrl2.Clear();
                             ViewerCtrl2.PageNumber = 1;
@@ -778,6 +786,7 @@ namespace DocEntry
                             ViewerCtrl2.Rotation = 0;
                             //ViewerCtrl2.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
                             ViewerCtrl2.Refresh();
+                            */
                             BtnOkInserta.Enabled = true;
                             BtnCancelar.Enabled = true;
                         }
@@ -850,25 +859,25 @@ namespace DocEntry
         {
             BandeInsert = 0;
             //ViewerCtrl1.Width = (int)VB6.TwipsToPixelsX(14595);
-            ViewerCtrl2.Visible = false;
+            //ViewerCtrl2.Visible = false;
             //ViewerCtrl2.Left = (int)VB6.TwipsToPixelsX(14625);
             //ViewerCtrl2.Width = (int)VB6.TwipsToPixelsX(525);
             //ViewerCtrl2.Height = (int)VB6.TwipsToPixelsY(9300);
             SPCont.SplitterDistance = SPCont.Size.Width - 25;
             SPCont.Panel2Collapsed = true;
-            if (ViewerCtrl2.DocumentFilename != string.Empty) {
-                Module1.XArchivo = ViewerCtrl2.DocumentFilename;
-                ViewerCtrl2.DocumentFilename = String.Empty;
-                ViewerCtrl1.Refresh();
+            //if (ViewerCtrl2.DocumentFilename != string.Empty) {
+              //  Module1.XArchivo = ViewerCtrl2.DocumentFilename;
+                //ViewerCtrl2.DocumentFilename = String.Empty;
+                //ViewerCtrl1.Refresh();
                 try { File.Delete(Module1.XArchivo); }
                 catch { }
-            }
+            //}
 
             BandeInsert = 0;
             LoadFiles(1);
             LoadFiles(5);
             return;
-
+            /*
             if (ViewerCtrl1.DocumentFilename != string.Empty)
             {
                 Module1.XArchivo = ViewerCtrl1.DocumentFilename;
@@ -877,7 +886,7 @@ namespace DocEntry
             {
                 Module1.XArchivo = String.Empty;
             }
-
+            */
             if (Module1.TipoOper == 1)
             {
                 LoadFiles(2);
@@ -926,11 +935,11 @@ namespace DocEntry
 
         private void BtnDeletePage_Click(Object eventSender, EventArgs eventArgs)
         {
-            int Pags = ViewerCtrl1.Pages.Count;
+            int Pags = 1;//ViewerCtrl1.Pages.Count;
             if (Pags > 1)
             {
-                int Pag = ViewerCtrl1.PageNumber;
-
+                int Pag = 1; // ViewerCtrl1.PageNumber;
+                /*
                 //ViewerCtrl1.DocumentFilename = Module1.XArchivo;                
                 ViewerCtrl1.Refresh();
                 ViewerCtrl1.Update(); 
@@ -942,18 +951,18 @@ namespace DocEntry
                 ViewerCtrl1.Update();
                 ViewerCtrl1.Refresh();
                 ImgAdmin1.Image = Module1.XArchivo;
-                ViewerCtrl1.PageNumber = 1;
+                ViewerCtrl1.PageNumber = 1;*/
                 ImgAdmin1.DeletePages(Pag, 1);
                 Pause(1); 
                 Application.DoEvents();
                 Application.DoEvents();
                 //ViewerCtrl1.DocumentFilename = Module1.XArchivo;
                 ImgAdmin1.Image = null;
-                ViewerCtrl1.DocumentFilename = "";
+                /*ViewerCtrl1.DocumentFilename = "";
                 ViewerCtrl1.DocumentFilename = Module1.XArchivo;
                 ViewerCtrl1.Update();
-                ViewerCtrl1.Refresh();
-                Pags = ViewerCtrl1.Pages.Count;
+                ViewerCtrl1.Refresh();*/
+                Pags = 1;// ViewerCtrl1.Pages.Count;
                 if (File.Exists(Module1.TmpImg + "VisalImg.tmp"))
                 {
                     File.Delete(Module1.TmpImg + "VisalImg.tmp");
@@ -967,16 +976,16 @@ namespace DocEntry
                 {
                     if (Pag >= Pags)
                     {
-                        ViewerCtrl1.PageNumber = Pags;
+                        //ViewerCtrl1.PageNumber = Pags;
                     }
                     else
                     {
-                        ViewerCtrl1.PageNumber = Pag;
+                        //ViewerCtrl1.PageNumber = Pag;
                     }
                 }
                 else
                 {
-                    ViewerCtrl1.PageNumber = 1;
+                    //ViewerCtrl1.PageNumber = 1;
                 }
                 if (Pags > 1)
                 {
@@ -1032,7 +1041,7 @@ namespace DocEntry
             Application.DoEvents();
 
 
-            ViewerCtrl1.BeginInit();
+            /*ViewerCtrl1.BeginInit();
             ViewerCtrl1.Update();
             ViewerCtrl1.Refresh();
             ViewerCtrl1.BeginInit();
@@ -1047,7 +1056,7 @@ namespace DocEntry
             ViewerCtrl1.Refresh();
             ViewerCtrl1.BeginInit();
             ViewerCtrl1.Visible = false;
-
+            */
 
             BandeInsert = 0;
             LoadFiles(1);
@@ -1131,8 +1140,8 @@ namespace DocEntry
                 if (Module1.SalirReg == 1 && Module1.TipoOper != 1 && Module1.TipoOper != 7)
                 {                   
                     this.Visible = true;
-                    ViewerCtrl1.DocumentFilename = String.Empty;
-                    ViewerCtrl2.DocumentFilename = String.Empty;
+                    //ViewerCtrl1.DocumentFilename = String.Empty;
+                    //ViewerCtrl2.DocumentFilename = String.Empty;
                     ImgAdmin1.Image = null;
                     TxtFolioUOC.Text = String.Empty;
                     Module1.DocList[inx].fileName = "";
@@ -1187,7 +1196,7 @@ namespace DocEntry
                     BtnSaveas.Enabled = false;
                     //AVG Fin Setp-2015
 
-                    IDMListView1.ClearItems();
+                    //IDMListView1.ClearItems();
                     Module1.XProd = DBNull.Value;
                     Module1.XInst = DBNull.Value;
                     Module1.XCalifOnd = DBNull.Value;
@@ -1256,9 +1265,9 @@ namespace DocEntry
                     MessageBox.Show(this, "Favor de teclear el Folio Uoc y/ó Cliente, como minimo", Application.ProductName);
                     return;
                 }
-                IDMListView1.ClearItems();
+                //IDMListView1.ClearItems();
                 //IDMListView2.ClearItems
-                ViewerCtrl1.Clear();
+                //ViewerCtrl1.Clear();
                 //ShowAnnotations.Value = 0
                 sWhere = "F_DOCTYPE = 'IMAGE'";
                 sWhere = sWhere + " AND F_DOCCLASSNAME = 'ExpedientesDC'";
@@ -1292,10 +1301,11 @@ namespace DocEntry
                 SetLVHeaders(Module1.gcHeadings, Module1.gcPropNames);
                 Module1.clsQuery.BindToLib(Module1.oLibrary, Module1.gcHeadings, sClass);
                 Cursor = Cursors.WaitCursor;
-                Module1.clsQuery.ExecQuery(ref this.IDMListView1, sWhere, "", 20, (DocEntry.FormMain)this);
+
+                //Module1.clsQuery.ExecQuery(ref this.IDMListView1, sWhere, "", 20, (DocEntry.FormMain)this);
                 //SSPanel2.Visible = False
                 Cursor = Cursors.Arrow;
-                if (IDMListView1.CountItems() > 0)
+                //if (IDMListView1.CountItems() > 0)
                 {
                     Artinsoft.VB6.Gui.SSTabHelper.SetTabEnabled(SSTab1, 1, true);
                     SSTab1.SelectedIndex = 1;
@@ -1681,7 +1691,7 @@ namespace DocEntry
             GC.Collect();
             GC.WaitForPendingFinalizers();
 
-            string ArchFin = ViewerCtrl1.DocumentFilename.ToString();
+            //string ArchFin = ViewerCtrl1.DocumentFilename.ToString();
             //AxAdminLibCtl.AxImgAdmin ImgAdminX;
             //ImgAdminX = new AxAdminLibCtl.AxImgAdmin();
             //ImgAdminX = ImgAdmin1;
@@ -1690,23 +1700,25 @@ namespace DocEntry
             Application.DoEvents();
             Application.DoEvents();
             BandeInsert = 0;
-            ViewerCtrl1.WPZoomMode = IDMViewerCtrl.idmWPZoomMode.idmWPZoomModeOriginal;
+            /*ViewerCtrl1.WPZoomMode = IDMViewerCtrl.idmWPZoomMode.idmWPZoomModeOriginal;
             ViewerCtrl2.WPZoomMode = IDMViewerCtrl.idmWPZoomMode.idmWPZoomModeOriginal;
             ViewerCtrl1.ZoomMode = IDMViewerCtrl.idmZoomMode.idmZoomModeFitToHeight;
             ViewerCtrl2.ZoomMode = IDMViewerCtrl.idmZoomMode.idmZoomModeFitToHeight; 
+            */
             //ViewerCtrl1.Width = (int)VB6.TwipsToPixelsX(14595);
             SPCont.SplitterDistance = SPCont.Size.Width - 25 ;
             SPCont.Panel2Collapsed = true;
-            ViewerCtrl2.Visible = false;
+            //ViewerCtrl2.Visible = false;
             //ViewerCtrl2.Left = (int)VB6.TwipsToPixelsX(14625);
             //ViewerCtrl2.Width = (int)VB6.TwipsToPixelsX(525);
             //ViewerCtrl2.Height = (int)VB6.TwipsToPixelsY(9300);
 
-            int Pag = ViewerCtrl1.PageNumber;
-            int Pag1 = ViewerCtrl2.Pages.Count;
-            if (ViewerCtrl1.DocumentFilename != string.Empty && ViewerCtrl2.DocumentFilename != string.Empty) {
+            int Pag = 1;//ViewerCtrl1.PageNumber;
+            int Pag1 = 1;// ViewerCtrl2.Pages.Count;
+            //if (ViewerCtrl1.DocumentFilename != string.Empty && ViewerCtrl2.DocumentFilename != string.Empty)
+            {
                 string ArchTemp = Module1.TmpImg + "ArcTemp.tif";                
-                Module1.XArchivo = ViewerCtrl2.DocumentFilename;
+                /*Module1.XArchivo = ViewerCtrl2.DocumentFilename;
                     ViewerCtrl1.BeginInit();
                     try {                        
                         ViewerCtrl1.PageNumber = Pag; 
@@ -1727,7 +1739,7 @@ namespace DocEntry
                     ViewerCtrl2.Update();
                     ViewerCtrl2.Refresh();
                     ViewerCtrl2.Clear();
-                    ViewerCtrl2.BeginInit();
+                    ViewerCtrl2.BeginInit();*/
                     Application.DoEvents();
                     Application.DoEvents();
                 //} catch { }
@@ -1741,7 +1753,7 @@ namespace DocEntry
                 }
                 try
                 {
-                    File.Copy(ArchFin, ArchTemp, true);
+                    //File.Copy(ArchFin, ArchTemp, true);
                     Application.DoEvents();
                     Application.DoEvents();
                 } catch { }               
@@ -1769,7 +1781,7 @@ namespace DocEntry
                 Application.DoEvents();
                 try
                 {
-                    File.Copy(ArchTemp, ArchFin, true);
+                    //File.Copy(ArchTemp, ArchFin, true);
                 } catch { }
 
                 Application.DoEvents();
@@ -1787,7 +1799,7 @@ namespace DocEntry
             BtnOkInserta.Enabled = false;
             BtnCancelar.Enabled = false;
             //ImgAdminX = null;
-            Module1.XArchivo = ArchFin;
+            //Module1.XArchivo = ArchFin;
             //ViewerCtrl1.Refresh();
             //ViewerCtrl2.Refresh(); 
             Pause(2);
@@ -1863,13 +1875,13 @@ namespace DocEntry
             }
             if (BandeInsert == 0)
             {
-                ViewerCtrl1.Rotation = (short)RotateAmount;
+                //ViewerCtrl1.Rotation = (short)RotateAmount;
             }
             else
             {
-                ViewerCtrl2.Rotation = (short)RotateAmount;
+                //ViewerCtrl2.Rotation = (short)RotateAmount;
             }
-            ViewerCtrl1.Rotation = (short)RotateAmount;
+            //ViewerCtrl1.Rotation = (short)RotateAmount;
             viewImage1.FlitVertical(); 
         }
 
@@ -1882,13 +1894,13 @@ namespace DocEntry
             }
             if (BandeInsert == 0)
             {
-                ViewerCtrl1.Rotation = (short)RotateAmount;
+                //ViewerCtrl1.Rotation = (short)RotateAmount;
             }
             else
             {
-                ViewerCtrl2.Rotation = (short)RotateAmount;
+                //ViewerCtrl2.Rotation = (short)RotateAmount;
             }
-            ViewerCtrl1.Rotation = (short)RotateAmount;
+            //ViewerCtrl1.Rotation = (short)RotateAmount;
             viewImage1.FlitHorizontal(); 
         }
 
@@ -1915,13 +1927,13 @@ namespace DocEntry
         {
             if (BandeInsert == 0)
             {
-                ViewerCtrl1.ZoomIn();
+                //ViewerCtrl1.ZoomIn();
             }
             else
             {
-                ViewerCtrl2.ZoomIn();
+                //ViewerCtrl2.ZoomIn();
             }
-            ViewerCtrl1.ZoomIn();
+            //ViewerCtrl1.ZoomIn();
             viewImage1.ZoomIn(); 
         }
 
@@ -1929,13 +1941,13 @@ namespace DocEntry
         {
             if (BandeInsert == 0)
             {
-                ViewerCtrl1.ZoomOut();
+              //  ViewerCtrl1.ZoomOut();
             }
             else
             {
-                ViewerCtrl2.ZoomOut();
+                //ViewerCtrl2.ZoomOut();
             }
-            ViewerCtrl1.ZoomOut();
+            //ViewerCtrl1.ZoomOut();
             viewImage1.ZoomOut(); 
         }
 
@@ -2186,7 +2198,7 @@ namespace DocEntry
         private void FormMain_Closed(Object eventSender, EventArgs eventArgs)
         {
             //Unload PropertyForm
-            Module1.oErrManager = null;
+            //Module1.oErrManager = null;
             if (Module1.oLibrary.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn))
             {
                 Module1.oLibrary.Logoff();
@@ -2217,11 +2229,11 @@ namespace DocEntry
             string Cade = String.Empty;
             string cade2 = String.Empty;
             byte PosPunto = 0;
-            if (IDMListView1.SelectedItem != null)
+            //if (IDMListView1.SelectedItem != null)
             {
-                Module1.oDocument = (IDMObjects.Document)IDMListView1.SelectedItem;
+                //Module1.oDocument = (IDMObjects.Document)IDMListView1.SelectedItem;
                 BtnPrint.Enabled = true;
-                ViewerCtrl1.Document = Module1.oDocument;
+                //ViewerCtrl1.Document = Module1.oDocument;
 
                 if (MessageBox.Show(this, "Desea Editar la Imagen Seleccionada ?", Application.ProductName, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -2244,7 +2256,7 @@ namespace DocEntry
                         File.Copy(Cade, Cade1, true);
                     } catch { }
                     //ViewerCtrl1.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
-                    ViewerCtrl1.Rotation = 0;
+                    //ViewerCtrl1.Rotation = 0;
                     Module1.XArchivo = Cade1;
                     LoadFiles(2);
                     BandeInsert = 0;
@@ -2278,7 +2290,7 @@ namespace DocEntry
                     //}
                 }
             }
-            else
+            //else
             {
                 BtnPrint.Enabled = false;
             }
@@ -2317,21 +2329,21 @@ namespace DocEntry
             ImgScan1.Image = string.Empty;
             if (BandeInsert == 0)
             {
-                ViewerCtrl1.DocumentFilename = String.Empty;
+                //ViewerCtrl1.DocumentFilename = String.Empty;
                 Module1.DocList[0].fileName = "";
                 Module1.TotalDocs = 0;
                 CommCount = 0;
             }
             else
             {
-                ViewerCtrl2.DocumentFilename = String.Empty;
+                //ViewerCtrl2.DocumentFilename = String.Empty;
             }
 
-            if ((BandeInsert ==0 ) && ViewerCtrl2.DocumentFilename == String.Empty && ViewerCtrl2.Visible == false)
+            //if ((BandeInsert ==0 ) && ViewerCtrl2.DocumentFilename == String.Empty && ViewerCtrl2.Visible == false)
             {
                 Module1.XArchivo = Module1.TmpImg + "img1.tif";               
             }
-            else
+            //else
             {
                 Module1.XArchivo = Module1.TmpImg + "img2.tif";
             }
@@ -2350,7 +2362,7 @@ namespace DocEntry
             BtnDeletePage.Enabled = true;
             ImgScan1.Image = Module1.XArchivo;
             ImgScan1.MultiPage = true;
-            ImgScan1.ScanTo = ScanLibCtl.ScanToConstants.DisplayAndFile;
+            //ImgScan1.ScanTo = ScanLibCtl.ScanToConstants.DisplayAndFile;
             try
             {
                 ImgScan1.StartScan();
@@ -2753,10 +2765,12 @@ namespace DocEntry
             //MyComputer.FileSystem.CurrentDirectory = Module1.HomeDirectory;
             Computer MyComputer = new Computer();
             MyComputer.FileSystem.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath) + "\\ReadQR";
+            /*
             ReadQR.Program.TipoConvPDF = ReadQR.Program.ArchivePDFtoArchiveTiff;
             ReadQR.Program.ArchivePDForTIFF = string.Empty; 
             ReadQR.Program.RutaAppWork = Path.GetDirectoryName(Application.ExecutablePath) + "\\ReadQR";
             ReadQR.Program.MuestraForma();
+            */
             MyComputer.FileSystem.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath);
 
         }

@@ -845,7 +845,7 @@ namespace DocEntry
             string theResult = String.Empty;
             string @Default = "";
             string result = new String(' ', 255);
-            int rc = (int)API.KERNEL.GetPrivateProfileString(stanza, keyname, @Default, ref result, result.Length, inifile);
+            int rc = (int)1;//API.KERNEL.GetPrivateProfileString(stanza, keyname, @Default, ref result, result.Length, inifile);
             if (rc != 0)
             {
                 theResult = result.Trim();

@@ -75,12 +75,18 @@
     </Reference>
     <Reference Include="Artinsoft.VB6, Version=2.1.3125.32454, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CreditoEmpresarial\OperaNET\Artinsoft.VB6.dll</HintPath>
+      <HintPath>..\C406_020\DataLayer\bin\Debug\Artinsoft.VB6.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.AdminLibCtl">
+      <HintPath>obj\Release\AxInterop.AdminLibCtl.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.ComCtl2, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>obj\Debug\AxInterop.ComCtl2.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.ScanLibCtl">
+      <HintPath>obj\Release\AxInterop.ScanLibCtl.dll</HintPath>
     </Reference>
     <Reference Include="IGWinFormsV15n, Version=15.1.0.0, Culture=neutral, PublicKeyToken=90cb718bcf54d1b2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

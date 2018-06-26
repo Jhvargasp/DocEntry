@@ -74,7 +74,7 @@ namespace DocEntry
         public System.Windows.Forms.Label LblUoc;
         public System.Windows.Forms.Panel SSPanel1;
         private System.Windows.Forms.TabPage _SSTab1_TabPage0;
-        public AxIDMListView.AxIDMListView IDMListView1;
+        //public AxIDMListView.AxIDMListView IDMListView1;
         private System.Windows.Forms.TabPage _SSTab1_TabPage1;
         public System.Windows.Forms.TabControl SSTab1;
         public System.Windows.Forms.Button BtnSalvar;
@@ -155,10 +155,10 @@ namespace DocEntry
             this.LblMsg = new System.Windows.Forms.Label();
             this.SPCont = new System.Windows.Forms.SplitContainer();
             this.viewImage1 = new ViewImages.ViewImage();
-            this.ViewerCtrl1 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
-            this.ViewerCtrl2 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
+            //this.ViewerCtrl1 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
+            //this.ViewerCtrl2 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
             this.ImgScan1 = new AxScanLibCtl.AxImgScan();
-            this.IDMListView1 = new AxIDMListView.AxIDMListView();
+            //this.IDMListView1 = new AxIDMListView.AxIDMListView();
             this.ImgAdmin1 = new AxAdminLibCtl.AxImgAdmin();
             this.SSTab1.SuspendLayout();
             this._SSTab1_TabPage0.SuspendLayout();
@@ -170,10 +170,10 @@ namespace DocEntry
             this.SPCont.Panel1.SuspendLayout();
             this.SPCont.Panel2.SuspendLayout();
             this.SPCont.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -705,7 +705,7 @@ namespace DocEntry
             // 
             // _SSTab1_TabPage1
             // 
-            this._SSTab1_TabPage1.Controls.Add(this.IDMListView1);
+//            this._SSTab1_TabPage1.Controls.Add(this.IDMListView1);
             this._SSTab1_TabPage1.Location = new System.Drawing.Point(4, 4);
             this._SSTab1_TabPage1.Name = "_SSTab1_TabPage1";
             this._SSTab1_TabPage1.Size = new System.Drawing.Size(561, 104);
@@ -861,11 +861,11 @@ namespace DocEntry
             // SPCont.Panel1
             // 
             this.SPCont.Panel1.Controls.Add(this.viewImage1);
-            this.SPCont.Panel1.Controls.Add(this.ViewerCtrl1);
+//            this.SPCont.Panel1.Controls.Add(this.ViewerCtrl1);
             // 
             // SPCont.Panel2
             // 
-            this.SPCont.Panel2.Controls.Add(this.ViewerCtrl2);
+  //          this.SPCont.Panel2.Controls.Add(this.ViewerCtrl2);
             this.SPCont.Panel2Collapsed = true;
             this.SPCont.Size = new System.Drawing.Size(1010, 607);
             this.SPCont.SplitterDistance = 25;
@@ -885,6 +885,7 @@ namespace DocEntry
             // 
             // ViewerCtrl1
             // 
+            /*
             this.ViewerCtrl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ViewerCtrl1.Enabled = true;
             this.ViewerCtrl1.Location = new System.Drawing.Point(0, 0);
@@ -903,6 +904,7 @@ namespace DocEntry
             this.ViewerCtrl2.Size = new System.Drawing.Size(92, 96);
             this.ViewerCtrl2.TabIndex = 13;
             this.ViewerCtrl2.Visible = false;
+            */
             // 
             // ImgScan1
             // 
@@ -917,12 +919,14 @@ namespace DocEntry
             // 
             // IDMListView1
             // 
+            /*
             this.IDMListView1.Location = new System.Drawing.Point(3, 4);
             this.IDMListView1.Name = "IDMListView1";
             this.IDMListView1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("IDMListView1.OcxState")));
             this.IDMListView1.Size = new System.Drawing.Size(555, 97);
             this.IDMListView1.TabIndex = 37;
             this.IDMListView1.DblClick += new System.EventHandler(this.IDMListView1_DblClick);
+            */
             // 
             // ImgAdmin1
             // 
@@ -941,7 +945,7 @@ namespace DocEntry
             this.ClientSize = new System.Drawing.Size(1017, 720);
             this.Controls.Add(this.LblMsg);
             this.Controls.Add(this.SPCont);
-            this.Controls.Add(this.ImgScan1);
+//            this.Controls.Add(this.ImgScan1);
             this.Controls.Add(this.SSTab1);
             this.Controls.Add(this.BtnSalvar);
             this.Controls.Add(this.X);
@@ -949,7 +953,7 @@ namespace DocEntry
             this.Controls.Add(this.BtnNext);
             this.Controls.Add(this.BtnPrevious);
             this.Controls.Add(this.BtnDelete);
-            this.Controls.Add(this.ImgAdmin1);
+//            this.Controls.Add(this.ImgAdmin1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -973,10 +977,10 @@ namespace DocEntry
             this.SPCont.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SPCont)).EndInit();
             this.SPCont.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -986,8 +990,8 @@ namespace DocEntry
 
         private System.Windows.Forms.Label LblMsg;
         private System.Windows.Forms.SplitContainer SPCont;
-        public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl2;
-        public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl1;
+        //public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl2;
+        //public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl1;
         private ViewImages.ViewImage viewImage1;
         private System.Windows.Forms.ComboBox CboResol;
         private System.Windows.Forms.Button BtnPDFtoTIFF;
