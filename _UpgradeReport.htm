@@ -1,0 +1,229 @@
+﻿<html>
+	<head>
+		<META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="_UpgradeReport_Files\UpgradeReport.css">
+		<title>DocEntryInputCenter.vbp Upgrade Report</title>
+		
+		<script language="javascript">
+			function outliner () {
+				oMe = window.event.srcElement
+				//get child element
+				var child = document.all[event.srcElement.getAttribute("child",false)];
+				//if child element exists, expand or collapse it.
+				if (null != child)
+					child.className = child.className == "collapsed" ? "expanded" : "collapsed";
+			}
+		
+			function changepic() {
+				uMe = window.event.srcElement;
+				var check = uMe.src.toLowerCase();
+				if (check.lastIndexOf("upgradereport_plus.gif") != -1)
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Minus.gif"
+				}
+				else
+				{
+					uMe.src = "_UpgradeReport_Files/UpgradeReport_Plus.gif"
+				}
+			}
+		</script>
+		
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0" onclick="outliner();">
+		<h1>Upgrade Report for DocEntryInputCenter.vbp</h1>
+		
+		<p><span class="note">
+		<b>Time of Upgrade:  </b>15/11/2007 11:42 a.m.<br>
+		</span></p>
+		
+		<h2>List of Project Files</h2>
+		<table cellpadding="2" cellspacing="0" width="98%" border="1"bordercolor="white" class="infotable">
+			<tr>
+				<td nowrap class="header">New Filename</td>
+				<td nowrap class="header">Original Filename</td>
+				<td nowrap class="header">File Type</td>
+				<td nowrap class="header">Status</td>
+				<td nowrap class="header">Errors</td>
+				<td nowrap class="header">Warnings</td>
+				<td nowrap class="header">Total Issues</td>
+			</tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue0">&nbsp;(Global Issues)</td>
+			<td class="content"></td>
+			<td class="content"></td>
+			<td class="content">
+		</td>	<td class="content">0</td>
+			<td class="content">0</td>
+			<td class="content">0</td>
+		</tr>
+			<tr class="collapsed" id="issue0" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Global update issues:</td></tr><tr><td class="issuenone">None</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue1">&nbsp;clsRegPersist.cs</td>
+			<td class="content">clsRegPersist.cls</td>
+			<td class="content">Class Module</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">0</td>
+			<td class="content">3</td>
+			<td class="content">3</td>
+		</tr>
+			<tr class="collapsed" id="issue1" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for clsRegPersist.cls:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">GetSettings</td><td class="issuecontent">Controls</td><td class="issuecontent">Controls</td><td class="issuecontent">Item</td><td class="issuecontent">Controls method Controls.Item has a new behavior.</td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">GetSettings</td><td class="issuecontent">Form</td><td class="issuecontent">fFrm</td><td class="issuecontent">Controls</td><td class="issuecontent">Form property fFrm.Controls has a new behavior.</td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">SaveSettings</td><td class="issuecontent">Form</td><td class="issuecontent">fFrm</td><td class="issuecontent">Controls</td><td class="issuecontent">Form property fFrm.Controls has a new behavior.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue2">&nbsp;clsSimpleQuery.cs</td>
+			<td class="content">clsSimpleQuery.cls</td>
+			<td class="content">Class Module</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">7</td>
+			<td class="content">3</td>
+			<td class="content">10</td>
+		</tr>
+			<tr class="collapsed" id="issue2" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for clsSimpleQuery.cls:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member DefaultLibrary is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member ClearItems is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member ClearColumnHeaders is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member AddColumnHeader is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member SwitchColumnHeaders is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member View is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member AddItems is not defined in type IDMListView.IDMListView.</td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">ExecQuery</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Couldn&apos;t resolve default property of object oRS.ActiveConnection.</td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">oQueryLib of type IDMObjects.Library is being forced to Scalar.</td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">ShowResults</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">IsNull</td><td class="issuecontent">Use of Null/IsNull() detected.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue3">&nbsp;DocEntry.cs</td>
+			<td class="content">DocEntry.frm</td>
+			<td class="content">Form</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">6</td>
+			<td class="content">5</td>
+			<td class="content">11</td>
+		</tr>
+			<tr class="collapsed" id="issue3" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for DocEntry.frm:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member Name is not defined in type IDMObjects.IFnGenericObject.</td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">array</td><td class="issuecontent">Array has a new behavior.</td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">ComboBox</td><td class="issuecontent">CboTipoDoc</td><td class="issuecontent">ItemData</td><td class="issuecontent">ComboBox property CboTipoDoc.ItemData was not upgraded.</td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">ComboBox</td><td class="issuecontent">CboUOC</td><td class="issuecontent">ItemData</td><td class="issuecontent">ComboBox property CboUOC.ItemData was not upgraded.</td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">IDMListView</td><td class="issuecontent">IDMListView1</td><td class="issuecontent"></td><td class="issuecontent">IDMListView property IDMListView1._ColumnHeaders was not upgraded.</td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">TabDlg.SSTab</td><td class="issuecontent">SSTab1</td><td class="issuecontent">TabsPerRow</td><td class="issuecontent">TabDlg.SSTab property SSTab1.TabsPerRow was not upgraded.</td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">BtnDone_Click</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Use of Null/IsNull() detected.</td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">Form_Load</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Use of Null/IsNull() detected.</td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">MyLogon</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Casting &apos;int&apos; to Enum may cause different behaviour.</td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">SaveDocument</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Casting &apos;int&apos; to Enum may cause different behaviour.</td></tr>
+					<tr><td width="10" class="issuecontent">11</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">SaveDocument</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">IsNull</td><td class="issuecontent">Use of Null/IsNull() detected.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue4">&nbsp;FormProg.cs</td>
+			<td class="content">FormProg.frm</td>
+			<td class="content">Form</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">1</td>
+			<td class="content">0</td>
+			<td class="content">1</td>
+		</tr>
+			<tr class="collapsed" id="issue4" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for FormProg.frm:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>Design Error</td><td class="issuecontent">(Layout)</td><td class="issuecontent">Form</td><td class="issuecontent">FormProg</td><td class="issuecontent">Picture</td><td class="issuecontent">Form property FormProg.Picture has a new behavior.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue5">&nbsp;frmSettings.cs</td>
+			<td class="content">frmSettings.frm</td>
+			<td class="content">Form</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">0</td>
+			<td class="content">1</td>
+			<td class="content">1</td>
+		</tr>
+			<tr class="collapsed" id="issue5" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for frmSettings.frm:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">ClearEntries</td><td class="issuecontent">Form</td><td class="issuecontent">frmSettings</td><td class="issuecontent">Controls</td><td class="issuecontent">Form property frmSettings.Controls has a new behavior.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue6">&nbsp;DocEntry.cs</td>
+			<td class="content">DocEntry.bas</td>
+			<td class="content">Module</td>
+			<td class="content">
+		Upgraded with issues</td>	<td class="content">12</td>
+			<td class="content">1</td>
+			<td class="content">13</td>
+		</tr>
+			<tr class="collapsed" id="issue6" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for DocEntry.bas:</td></tr><tr><td width="10" class="issuehdr">#</td><td class="issuehdr" nowrap>Severity</td><td class="issuehdr">Location</td><td class="issuehdr">Object Type</td><td class="issuehdr">Object Name</td><td class="issuehdr">Property</td><td class="issuehdr">Description</td></tr>
+					<tr><td width="10" class="issuecontent">1</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">(Parsing)</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">#If #EndIf block was not upgraded because the expression Else did not evaluate to True or was not evaluated.</td></tr>
+					<tr><td width="10" class="issuecontent">2</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_MAQDEST is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">3</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_USUDEST is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">4</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_TIPDEST is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">5</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_APLDEST is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">6</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_APLORIG is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">7</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_BASEDATO is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">8</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_TIMER is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">9</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_OPERACION is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">10</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member pSAPUF_PASS is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">11</td><td class="issuecontent" nowrap>To Do</td><td class="issuecontent">ObtPassSapuf</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Member ObtenPass_SAPUF is not defined in type ClassSAPUF.</td></tr>
+					<tr><td width="10" class="issuecontent">12</td><td class="issuecontent" nowrap>Compile Error</td><td class="issuecontent">Main</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Load</td><td class="issuecontent">Load statement is not supported.</td></tr>
+					<tr><td width="10" class="issuecontent">13</td><td class="issuecontent" nowrap>Runtime Warning</td><td class="issuecontent">Main</td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent"></td><td class="issuecontent">Application will terminate when Sub Main() finishes.</td></tr>
+				</table>
+			</td></tr>
+		<tr class="row">
+			<td class="content"><IMG alt="expand/collapse section" class="expandable" height="11"onclick=changepic() src="_UpgradeReport_Files/UpgradeReport_Plus.gif" width="9" child="issue7">&nbsp;gear.cs</td>
+			<td class="content">gear.bas</td>
+			<td class="content">Module</td>
+			<td class="content">
+		Upgraded</td>	<td class="content">0</td>
+			<td class="content">0</td>
+			<td class="content">0</td>
+		</tr>
+			<tr class="collapsed" id="issue7" bgcolor="#ffffff"><td colspan="7">
+				<table width="97%" border="1" bordercolor="#dcdcdc" rules="cols" class="issuetable">
+				<tr><td colspan="7" class="issuetitle">Upgrade Issues for gear.bas:</td></tr><tr><td class="issuenone">None</td></tr>
+				</table>
+			</td></tr>
+		<tr valign="top">
+			<td class="foot">7 File(s)</td>
+			<td class="foot">&nbsp;</td>
+			<td class="foot">Forms: 3<br>Modules: 2<br>Class Modules: 2</td>
+			<td class="foot">
+		Upgraded: 7<BR>
+		Not upgraded: 0
+		</td>
+			<td class="foot">26</td>
+			<td class="foot">13</td>
+			<td class="foot">39</td>
+		</tr>
+		</table>
+		<p class="help">
+			<A href='ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?keyword="a16bd8ca-916d-4cd3-821c-417999d3cb97"'>Click here for help with troubleshooting upgraded projects</A>
+		</p>
+				<p>
+					<table class = "note">
+						<tr><td nowrap><b>Upgrade Settings</b></td></tr>
+						<tr><td nowrap><b>Log File:</b> DocEntryInputCenter.log</td></tr>
+						<tr><td nowrap><b>Migrate Project To:</b> WinExe</td></tr>
+						<tr><td nowrap><b>Output Directory:</b> D:\ais\dest\Migrated\DocEntry FileNET\</td></tr>
+						<tr><td nowrap><b>Output Name:</b> DocEntryInputCenter.csproj</td></tr>
+						<tr><td nowrap><b>Project Name:</b> DocEntryInputCenter</td></tr>
+						<tr><td nowrap><b>Project Path:</b> D:\ais\src\G3353\C406\C406_090\DocEntry FileNET\DocEntryInputCenter.vbp</td></tr>
+					</table>
+				</p>
+	</body>
+</html>
