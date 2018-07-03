@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
 using VB6 = Microsoft.VisualBasic.Compatibility.VB6.Support;
+using FileNet.Api.Core;
 
 namespace DocEntry
 {
@@ -93,14 +94,16 @@ namespace DocEntry
             }
         }
 
-        static private IDMObjects.Document _oDocument;
-        static public IDMObjects.Document oDocument
+        //static private IDMObjects.Document _oDocument;
+        static private IDocument _oDocument;
+        // static public IDMObjects.Document oDocument
+        static public IDocument oDocument
         {
             get
             {
-                if (_oDocument == null)
+                /*if (_oDocument == null)
                     _oDocument = new IDMObjects.Document();
-
+                    */
                 return _oDocument;
             }
             set
@@ -109,13 +112,15 @@ namespace DocEntry
             }
         }
 
-        static private IDMObjects.Library _oLibrary;
-        static public IDMObjects.Library oLibrary
+        //static private IDMObjects.Library _oLibrary;
+        static private IObjectStore _oLibrary;
+        //static public IDMObjects.Library oLibrary
+        static public IObjectStore oLibrary
         {
             get
             {
-                if (_oLibrary == null)
-                    _oLibrary = new IDMObjects.Library();
+                //if (_oLibrary == null)
+                  //  _oLibrary = new IDMObjects.Library();
 
                 return _oLibrary;
             }
@@ -125,8 +130,9 @@ namespace DocEntry
             }
         }
 
-        static public IDMObjects.PropertyDescriptions goPropDescs; 
-       
+        //static public IDMObjects.PropertyDescriptions goPropDescs; 
+        static public FileNet.Api.Collection.IPropertyDescriptionList goPropDescs = null;
+
         static public bool gbISLogOff = false;
 
         static private frmSettings _gfSettings;
@@ -200,7 +206,8 @@ namespace DocEntry
         static public int ArraySz = 0; //  Current array sizes
         static public DocInfo[] DocList; //  Primary array of selected filenames for browsing
         static public string[] FolderList; //  Optional folder for each document
-        static public IDMObjects.Document[] FinalList; //  Final array of FN DocObjects to be committed
+        //static public IDMObjects.Document[] FinalList; //  Final array of FN DocObjects to be committed
+        static public IDocument[] FinalList; //  Final array of FN DocObjects to be committed
         static public int TotalDocs = 0; //  Number of docs in DocList        
         // Use form variables to insulate code from form name changes
 
@@ -563,7 +570,7 @@ namespace DocEntry
             // These arrays will be resized after files are loaded...
             ArraySz = InitArraySz;
             DocList = new DocInfo[ArraySz + 1];
-            FinalList = new IDMObjects.Document[ArraySz + 1];
+            //FinalList = new IDMObjects.Document[ArraySz + 1];
             FolderList = new string[ArraySz + 1];
            
             //Load(MainForm);

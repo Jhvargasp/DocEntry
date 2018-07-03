@@ -88,313 +88,320 @@ namespace DocEntry
 	[System.Diagnostics.DebuggerStepThrough]
 	 private void  InitializeComponent()
 	{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmSettings));
-			this.components = new System.ComponentModel.Container();
-			this.ToolTip1 = new System.Windows.Forms.ToolTip(components);
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.btnOk = new System.Windows.Forms.Button();
-			this.txtResDocClass = new System.Windows.Forms.TextBox();
-			this.txtIMSLibName = new System.Windows.Forms.TextBox();
-			this.cmdClear = new System.Windows.Forms.Button();
-			this.cmdSave = new System.Windows.Forms.Button();
-			this.txtResFolder = new System.Windows.Forms.TextBox();
-			this.txtIMSPassword = new System.Windows.Forms.TextBox();
-			this.txtIMSUser = new System.Windows.Forms.TextBox();
-			this.Label9 = new System.Windows.Forms.Label();
-			this.Label8 = new System.Windows.Forms.Label();
-			this.Label3 = new System.Windows.Forms.Label();
-			this.Label2 = new System.Windows.Forms.Label();
-			this.Label1 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			this.ToolTip1.Active = true;
-			this.Text = "Form1";
-			this.ClientSize = new System.Drawing.Size(441, 267);
-			this.Location = new System.Drawing.Point(4, 23);
-			this.Icon = (System.Drawing.Icon) resources.GetObject("frmSettings.Icon");
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.BackColor = System.Drawing.SystemColors.Control;
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-			this.ControlBox = true;
-			this.Enabled = true;
-			this.KeyPreview = false;
-			this.MaximizeBox = true;
-			this.MinimizeBox = true;
-			this.Cursor = System.Windows.Forms.Cursors.Default;
-			this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.ShowInTaskbar = true;
-			this.HelpButton = false;
-			this.WindowState = System.Windows.Forms.FormWindowState.Normal;
-			this.Name = "frmSettings";
-			this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.CancelButton = this.btnCancel;
-			this.btnCancel.Text = "Cancel";
-			this.btnCancel.Size = new System.Drawing.Size(97, 41);
-			this.btnCancel.Location = new System.Drawing.Point(324, 218);
-			this.btnCancel.TabIndex = 9;
-			this.btnCancel.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
-			this.btnCancel.CausesValidation = true;
-			this.btnCancel.Enabled = true;
-			this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
-			this.btnCancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.btnCancel.TabStop = true;
-			this.btnCancel.Name = "btnCancel";
-			this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.btnOk.Text = "Ok";
-			this.btnOk.Size = new System.Drawing.Size(97, 41);
-			this.btnOk.Location = new System.Drawing.Point(224, 218);
-			this.btnOk.TabIndex = 8;
-			this.btnOk.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.btnOk.BackColor = System.Drawing.SystemColors.Control;
-			this.btnOk.CausesValidation = true;
-			this.btnOk.Enabled = true;
-			this.btnOk.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.btnOk.Cursor = System.Windows.Forms.Cursors.Default;
-			this.btnOk.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.btnOk.TabStop = true;
-			this.btnOk.Name = "btnOk";
-			this.txtResDocClass.AutoSize = false;
-			this.txtResDocClass.Size = new System.Drawing.Size(177, 25);
-			this.txtResDocClass.Location = new System.Drawing.Point(192, 160);
-			this.txtResDocClass.TabIndex = 5;
-			this.txtResDocClass.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.txtResDocClass.AcceptsReturn = true;
-			this.txtResDocClass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtResDocClass.BackColor = System.Drawing.SystemColors.Window;
-			this.txtResDocClass.CausesValidation = true;
-			this.txtResDocClass.Enabled = true;
-			this.txtResDocClass.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.txtResDocClass.HideSelection = true;
-			this.txtResDocClass.ReadOnly = false;
-			this.txtResDocClass.MaxLength = 0;
-			this.txtResDocClass.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtResDocClass.Multiline = false;
-			this.txtResDocClass.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtResDocClass.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtResDocClass.TabStop = true;
-			this.txtResDocClass.Visible = true;
-			this.txtResDocClass.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.txtResDocClass.Name = "txtResDocClass";
-			this.txtIMSLibName.AutoSize = false;
-			this.txtIMSLibName.Size = new System.Drawing.Size(177, 25);
-			this.txtIMSLibName.Location = new System.Drawing.Point(192, 16);
-			this.txtIMSLibName.TabIndex = 1;
-			this.txtIMSLibName.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.txtIMSLibName.AcceptsReturn = true;
-			this.txtIMSLibName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtIMSLibName.BackColor = System.Drawing.SystemColors.Window;
-			this.txtIMSLibName.CausesValidation = true;
-			this.txtIMSLibName.Enabled = true;
-			this.txtIMSLibName.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.txtIMSLibName.HideSelection = true;
-			this.txtIMSLibName.ReadOnly = false;
-			this.txtIMSLibName.MaxLength = 0;
-			this.txtIMSLibName.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtIMSLibName.Multiline = false;
-			this.txtIMSLibName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtIMSLibName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtIMSLibName.TabStop = true;
-			this.txtIMSLibName.Visible = true;
-			this.txtIMSLibName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.txtIMSLibName.Name = "txtIMSLibName";
-			this.cmdClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.cmdClear.Text = "Clear settings";
-			this.cmdClear.Size = new System.Drawing.Size(97, 41);
-			this.cmdClear.Location = new System.Drawing.Point(122, 218);
-			this.cmdClear.TabIndex = 7;
-			this.cmdClear.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.cmdClear.BackColor = System.Drawing.SystemColors.Control;
-			this.cmdClear.CausesValidation = true;
-			this.cmdClear.Enabled = true;
-			this.cmdClear.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cmdClear.Cursor = System.Windows.Forms.Cursors.Default;
-			this.cmdClear.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.cmdClear.TabStop = true;
-			this.cmdClear.Name = "cmdClear";
-			this.cmdSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.cmdSave.Text = "Save settings";
-			this.cmdSave.Size = new System.Drawing.Size(97, 41);
-			this.cmdSave.Location = new System.Drawing.Point(20, 218);
-			this.cmdSave.TabIndex = 6;
-			this.cmdSave.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.cmdSave.BackColor = System.Drawing.SystemColors.Control;
-			this.cmdSave.CausesValidation = true;
-			this.cmdSave.Enabled = true;
-			this.cmdSave.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.cmdSave.Cursor = System.Windows.Forms.Cursors.Default;
-			this.cmdSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.cmdSave.TabStop = true;
-			this.cmdSave.Name = "cmdSave";
-			this.txtResFolder.AutoSize = false;
-			this.txtResFolder.Size = new System.Drawing.Size(177, 25);
-			this.txtResFolder.Location = new System.Drawing.Point(192, 125);
-			this.txtResFolder.TabIndex = 4;
-			this.txtResFolder.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.txtResFolder.AcceptsReturn = true;
-			this.txtResFolder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtResFolder.BackColor = System.Drawing.SystemColors.Window;
-			this.txtResFolder.CausesValidation = true;
-			this.txtResFolder.Enabled = true;
-			this.txtResFolder.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.txtResFolder.HideSelection = true;
-			this.txtResFolder.ReadOnly = false;
-			this.txtResFolder.MaxLength = 0;
-			this.txtResFolder.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtResFolder.Multiline = false;
-			this.txtResFolder.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtResFolder.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtResFolder.TabStop = true;
-			this.txtResFolder.Visible = true;
-			this.txtResFolder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.txtResFolder.Name = "txtResFolder";
-			this.txtIMSPassword.AutoSize = false;
-			this.txtIMSPassword.Size = new System.Drawing.Size(177, 25);
-			this.txtIMSPassword.Location = new System.Drawing.Point(192, 86);
-			this.txtIMSPassword.TabIndex = 3;
-			this.txtIMSPassword.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.txtIMSPassword.AcceptsReturn = true;
-			this.txtIMSPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtIMSPassword.BackColor = System.Drawing.SystemColors.Window;
-			this.txtIMSPassword.CausesValidation = true;
-			this.txtIMSPassword.Enabled = true;
-			this.txtIMSPassword.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.txtIMSPassword.HideSelection = true;
-			this.txtIMSPassword.ReadOnly = false;
-			this.txtIMSPassword.MaxLength = 0;
-			this.txtIMSPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtIMSPassword.Multiline = false;
-			this.txtIMSPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtIMSPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtIMSPassword.TabStop = true;
-			this.txtIMSPassword.Visible = true;
-			this.txtIMSPassword.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.txtIMSPassword.Name = "txtIMSPassword";
-			this.txtIMSUser.AutoSize = false;
-			this.txtIMSUser.Size = new System.Drawing.Size(177, 25);
-			this.txtIMSUser.Location = new System.Drawing.Point(192, 50);
-			this.txtIMSUser.TabIndex = 2;
-			this.txtIMSUser.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.txtIMSUser.AcceptsReturn = true;
-			this.txtIMSUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtIMSUser.BackColor = System.Drawing.SystemColors.Window;
-			this.txtIMSUser.CausesValidation = true;
-			this.txtIMSUser.Enabled = true;
-			this.txtIMSUser.ForeColor = System.Drawing.SystemColors.WindowText;
-			this.txtIMSUser.HideSelection = true;
-			this.txtIMSUser.ReadOnly = false;
-			this.txtIMSUser.MaxLength = 0;
-			this.txtIMSUser.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtIMSUser.Multiline = false;
-			this.txtIMSUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.txtIMSUser.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtIMSUser.TabStop = true;
-			this.txtIMSUser.Visible = true;
-			this.txtIMSUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.txtIMSUser.Name = "txtIMSUser";
-			this.Label9.Text = "Resume DocClass:";
-			this.Label9.Size = new System.Drawing.Size(105, 25);
-			this.Label9.Location = new System.Drawing.Point(50, 168);
-			this.Label9.TabIndex = 13;
-			this.Label9.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.Label9.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.Label9.BackColor = System.Drawing.SystemColors.Control;
-			this.Label9.Enabled = true;
-			this.Label9.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.Label9.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.Label9.UseMnemonic = true;
-			this.Label9.Visible = true;
-			this.Label9.AutoSize = false;
-			this.Label9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Label9.Name = "Label9";
-			this.Label8.Text = "IDMIS Library";
-			this.Label8.Size = new System.Drawing.Size(89, 25);
-			this.Label8.Location = new System.Drawing.Point(48, 24);
-			this.Label8.TabIndex = 12;
-			this.Label8.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.Label8.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.Label8.BackColor = System.Drawing.SystemColors.Control;
-			this.Label8.Enabled = true;
-			this.Label8.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.Label8.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.Label8.UseMnemonic = true;
-			this.Label8.Visible = true;
-			this.Label8.AutoSize = false;
-			this.Label8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Label8.Name = "Label8";
-			this.Label3.Text = "Resume Folder:";
-			this.Label3.Size = new System.Drawing.Size(89, 25);
-			this.Label3.Location = new System.Drawing.Point(50, 133);
-			this.Label3.TabIndex = 11;
-			this.Label3.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.Label3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.Label3.BackColor = System.Drawing.SystemColors.Control;
-			this.Label3.Enabled = true;
-			this.Label3.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.Label3.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.Label3.UseMnemonic = true;
-			this.Label3.Visible = true;
-			this.Label3.AutoSize = false;
-			this.Label3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Label3.Name = "Label3";
-			this.Label2.Text = "IDMIS Password:";
-			this.Label2.Size = new System.Drawing.Size(89, 25);
-			this.Label2.Location = new System.Drawing.Point(48, 96);
-			this.Label2.TabIndex = 10;
-			this.Label2.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.Label2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.Label2.BackColor = System.Drawing.SystemColors.Control;
-			this.Label2.Enabled = true;
-			this.Label2.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.Label2.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.Label2.UseMnemonic = true;
-			this.Label2.Visible = true;
-			this.Label2.AutoSize = false;
-			this.Label2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Label2.Name = "Label2";
-			this.Label1.Text = "IDMIS Usercode:";
-			this.Label1.Size = new System.Drawing.Size(89, 25);
-			this.Label1.Location = new System.Drawing.Point(48, 56);
-			this.Label1.TabIndex = 0;
-			this.Label1.Font = new System.Drawing.Font("Arial", 8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			this.Label1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.Label1.BackColor = System.Drawing.SystemColors.Control;
-			this.Label1.Enabled = true;
-			this.Label1.ForeColor = System.Drawing.SystemColors.ControlText;
-			this.Label1.Cursor = System.Windows.Forms.Cursors.Default;
-			this.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.Label1.UseMnemonic = true;
-			this.Label1.Visible = true;
-			this.Label1.AutoSize = false;
-			this.Label1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.Label1.Name = "Label1";
-			this.Controls.Add(btnCancel);
-			this.Controls.Add(btnOk);
-			this.Controls.Add(txtResDocClass);
-			this.Controls.Add(txtIMSLibName);
-			this.Controls.Add(cmdClear);
-			this.Controls.Add(cmdSave);
-			this.Controls.Add(txtResFolder);
-			this.Controls.Add(txtIMSPassword);
-			this.Controls.Add(txtIMSUser);
-			this.Controls.Add(Label9);
-			this.Controls.Add(Label8);
-			this.Controls.Add(Label3);
-			this.Controls.Add(Label2);
-			this.Controls.Add(Label1);
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-			this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
-			this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
-			this.ResumeLayout(false);
-			this.PerformLayout();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.txtResDocClass = new System.Windows.Forms.TextBox();
+            this.txtIMSLibName = new System.Windows.Forms.TextBox();
+            this.cmdClear = new System.Windows.Forms.Button();
+            this.cmdSave = new System.Windows.Forms.Button();
+            this.txtResFolder = new System.Windows.Forms.TextBox();
+            this.txtIMSPassword = new System.Windows.Forms.TextBox();
+            this.txtIMSUser = new System.Windows.Forms.TextBox();
+            this.Label9 = new System.Windows.Forms.Label();
+            this.Label8 = new System.Windows.Forms.Label();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.textWorkplace = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textResUrl = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancel.Location = new System.Drawing.Point(324, 281);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCancel.Size = new System.Drawing.Size(97, 41);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOk.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnOk.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOk.Location = new System.Drawing.Point(224, 281);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnOk.Size = new System.Drawing.Size(97, 41);
+            this.btnOk.TabIndex = 8;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // txtResDocClass
+            // 
+            this.txtResDocClass.AcceptsReturn = true;
+            this.txtResDocClass.BackColor = System.Drawing.SystemColors.Window;
+            this.txtResDocClass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtResDocClass.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResDocClass.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtResDocClass.Location = new System.Drawing.Point(192, 160);
+            this.txtResDocClass.MaxLength = 0;
+            this.txtResDocClass.Name = "txtResDocClass";
+            this.txtResDocClass.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtResDocClass.Size = new System.Drawing.Size(177, 25);
+            this.txtResDocClass.TabIndex = 5;
+            // 
+            // txtIMSLibName
+            // 
+            this.txtIMSLibName.AcceptsReturn = true;
+            this.txtIMSLibName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIMSLibName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIMSLibName.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIMSLibName.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtIMSLibName.Location = new System.Drawing.Point(192, 16);
+            this.txtIMSLibName.MaxLength = 0;
+            this.txtIMSLibName.Name = "txtIMSLibName";
+            this.txtIMSLibName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtIMSLibName.Size = new System.Drawing.Size(177, 25);
+            this.txtIMSLibName.TabIndex = 1;
+            // 
+            // cmdClear
+            // 
+            this.cmdClear.BackColor = System.Drawing.SystemColors.Control;
+            this.cmdClear.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmdClear.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdClear.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmdClear.Location = new System.Drawing.Point(122, 281);
+            this.cmdClear.Name = "cmdClear";
+            this.cmdClear.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmdClear.Size = new System.Drawing.Size(97, 41);
+            this.cmdClear.TabIndex = 7;
+            this.cmdClear.Text = "Clear settings";
+            this.cmdClear.UseVisualStyleBackColor = false;
+            this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
+            // 
+            // cmdSave
+            // 
+            this.cmdSave.BackColor = System.Drawing.SystemColors.Control;
+            this.cmdSave.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmdSave.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSave.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cmdSave.Location = new System.Drawing.Point(20, 281);
+            this.cmdSave.Name = "cmdSave";
+            this.cmdSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmdSave.Size = new System.Drawing.Size(97, 41);
+            this.cmdSave.TabIndex = 6;
+            this.cmdSave.Text = "Save settings";
+            this.cmdSave.UseVisualStyleBackColor = false;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
+            // 
+            // txtResFolder
+            // 
+            this.txtResFolder.AcceptsReturn = true;
+            this.txtResFolder.BackColor = System.Drawing.SystemColors.Window;
+            this.txtResFolder.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtResFolder.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResFolder.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtResFolder.Location = new System.Drawing.Point(192, 125);
+            this.txtResFolder.MaxLength = 0;
+            this.txtResFolder.Name = "txtResFolder";
+            this.txtResFolder.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtResFolder.Size = new System.Drawing.Size(177, 25);
+            this.txtResFolder.TabIndex = 4;
+            // 
+            // txtIMSPassword
+            // 
+            this.txtIMSPassword.AcceptsReturn = true;
+            this.txtIMSPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIMSPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIMSPassword.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIMSPassword.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtIMSPassword.Location = new System.Drawing.Point(192, 86);
+            this.txtIMSPassword.MaxLength = 0;
+            this.txtIMSPassword.Name = "txtIMSPassword";
+            this.txtIMSPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtIMSPassword.Size = new System.Drawing.Size(177, 25);
+            this.txtIMSPassword.TabIndex = 3;
+            // 
+            // txtIMSUser
+            // 
+            this.txtIMSUser.AcceptsReturn = true;
+            this.txtIMSUser.BackColor = System.Drawing.SystemColors.Window;
+            this.txtIMSUser.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIMSUser.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIMSUser.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtIMSUser.Location = new System.Drawing.Point(192, 50);
+            this.txtIMSUser.MaxLength = 0;
+            this.txtIMSUser.Name = "txtIMSUser";
+            this.txtIMSUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtIMSUser.Size = new System.Drawing.Size(177, 25);
+            this.txtIMSUser.TabIndex = 2;
+            // 
+            // Label9
+            // 
+            this.Label9.BackColor = System.Drawing.SystemColors.Control;
+            this.Label9.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Label9.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label9.Location = new System.Drawing.Point(50, 168);
+            this.Label9.Name = "Label9";
+            this.Label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Label9.Size = new System.Drawing.Size(105, 25);
+            this.Label9.TabIndex = 13;
+            this.Label9.Text = "Resume DocClass:";
+            // 
+            // Label8
+            // 
+            this.Label8.BackColor = System.Drawing.SystemColors.Control;
+            this.Label8.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Label8.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label8.Location = new System.Drawing.Point(48, 24);
+            this.Label8.Name = "Label8";
+            this.Label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Label8.Size = new System.Drawing.Size(89, 25);
+            this.Label8.TabIndex = 12;
+            this.Label8.Text = "IDMIS Library";
+            // 
+            // Label3
+            // 
+            this.Label3.BackColor = System.Drawing.SystemColors.Control;
+            this.Label3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Label3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label3.Location = new System.Drawing.Point(50, 133);
+            this.Label3.Name = "Label3";
+            this.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Label3.Size = new System.Drawing.Size(89, 25);
+            this.Label3.TabIndex = 11;
+            this.Label3.Text = "Resume Folder:";
+            // 
+            // Label2
+            // 
+            this.Label2.BackColor = System.Drawing.SystemColors.Control;
+            this.Label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Label2.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label2.Location = new System.Drawing.Point(48, 96);
+            this.Label2.Name = "Label2";
+            this.Label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Label2.Size = new System.Drawing.Size(89, 25);
+            this.Label2.TabIndex = 10;
+            this.Label2.Text = "IDMIS Password:";
+            // 
+            // Label1
+            // 
+            this.Label1.BackColor = System.Drawing.SystemColors.Control;
+            this.Label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Label1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label1.Location = new System.Drawing.Point(48, 56);
+            this.Label1.Name = "Label1";
+            this.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Label1.Size = new System.Drawing.Size(89, 25);
+            this.Label1.TabIndex = 0;
+            this.Label1.Text = "IDMIS Usercode:";
+            // 
+            // textWorkplace
+            // 
+            this.textWorkplace.AcceptsReturn = true;
+            this.textWorkplace.BackColor = System.Drawing.SystemColors.Window;
+            this.textWorkplace.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textWorkplace.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textWorkplace.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textWorkplace.Location = new System.Drawing.Point(192, 239);
+            this.textWorkplace.MaxLength = 0;
+            this.textWorkplace.Name = "textWorkplace";
+            this.textWorkplace.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textWorkplace.Size = new System.Drawing.Size(177, 20);
+            this.textWorkplace.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label5.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(50, 240);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(105, 25);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "URL Workplace:";
+            // 
+            // textResUrl
+            // 
+            this.textResUrl.AcceptsReturn = true;
+            this.textResUrl.BackColor = System.Drawing.SystemColors.Window;
+            this.textResUrl.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textResUrl.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textResUrl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textResUrl.Location = new System.Drawing.Point(192, 200);
+            this.textResUrl.MaxLength = 0;
+            this.textResUrl.Name = "textResUrl";
+            this.textResUrl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textResUrl.Size = new System.Drawing.Size(177, 20);
+            this.textResUrl.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label4.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(50, 201);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(105, 25);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "URL Soap WS:";
+            // 
+            // frmSettings
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(441, 355);
+            this.Controls.Add(this.textWorkplace);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textResUrl);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.txtResDocClass);
+            this.Controls.Add(this.txtIMSLibName);
+            this.Controls.Add(this.cmdClear);
+            this.Controls.Add(this.cmdSave);
+            this.Controls.Add(this.txtResFolder);
+            this.Controls.Add(this.txtIMSPassword);
+            this.Controls.Add(this.txtIMSUser);
+            this.Controls.Add(this.Label9);
+            this.Controls.Add(this.Label8);
+            this.Controls.Add(this.Label3);
+            this.Controls.Add(this.Label2);
+            this.Controls.Add(this.Label1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = new System.Drawing.Point(4, 23);
+            this.Name = "frmSettings";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 	}
-#endregion 
-}
+        #endregion
+
+        public System.Windows.Forms.TextBox textWorkplace;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox textResUrl;
+        public System.Windows.Forms.Label label4;
+    }
 }

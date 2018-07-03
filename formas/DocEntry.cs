@@ -14,6 +14,15 @@ using ImageGear.Processing;
 using ImageGear.Display;
 using VB6 = Microsoft.VisualBasic.Compatibility.VB6.Support;
 using Microsoft.VisualBasic.Devices;
+using FileNet.Api.Core;
+using System.IO;
+using FileNet.Api.Collection;
+using System.Collections;
+using FileNet.Api.Util;
+using FileNet.Api.Authentication;
+using FileNet.Api.Meta;
+using static FileNet.Api.Core.Factory;
+using DocEntry.modulos;
 //using ReadQR;
 
 
@@ -30,6 +39,7 @@ namespace DocEntry
         private int BandeInsert = 0;
         private byte Bande = 0;
         int CommCount = 0; // Count of docs marked for committal
+        CEConnection ceConnection = new CEConnection();
         //private AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrlX;
 
         //FileStream fs;
@@ -47,7 +57,8 @@ namespace DocEntry
             //Set goPropDescs = oLibrary.FilterPropertyDescriptions(idmObjTypeDocument, _
             //'asClasses)
             //Module1.goPropDescs = (IDMObjects.PropertyDescriptions)Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, asClasses);
-            Module1.goPropDescs = Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, asClasses);
+            //Module1.goPropDescs = Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, asClasses);
+            Module1.goPropDescs = ceConnection.getPropertiesDescriptions(Module1.oLibrary, asClasses);
             //IDMListView1.ClearColumnHeaders(Module1.oLibrary);
             //IDMListView1.ClearItems();
             foreach (IDMObjects.PropertyDescription oPropDesc in Module1.goPropDescs)
@@ -196,12 +207,12 @@ namespace DocEntry
                 // connections
                 if (Module1.gbISLogOff)
                 {
-                    Module1.oLibrary.Logoff();
+                    //Module1.oLibrary.Logoff();
                 }
                 Module1.oLibrary = null;
 
                 // Hook up to the IMS library
-                Module1.oLibrary.SystemType = IDMObjects.idmSysTypeOptions.idmSysTypeIS;
+                /*Module1.oLibrary.SystemType = IDMObjects.idmSysTypeOptions.idmSysTypeIS;
                 Module1.oLibrary.Name = Module1.gfSettings.txtIMSLibName.Text;
                 if (!Module1.oLibrary.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn))
                 {
@@ -221,7 +232,7 @@ namespace DocEntry
                         result = true;
                         Module1.gbISLogOff = true;
                     }
-                }
+                }*/
 
             }
             catch (Exception excep)
@@ -479,7 +490,8 @@ namespace DocEntry
                             DocInfo[] redimAux = new DocInfo[Module1.ArraySz + 1];
                             Array.Copy(Module1.DocList, redimAux, Math.Min(Module1.DocList.Length, redimAux.Length));
                             Module1.DocList = redimAux;
-                            Module1.FinalList = new IDMObjects.Document[Module1.ArraySz + 1];
+                            // Module1.FinalList = new IDMObjects.Document[Module1.ArraySz + 1];
+                            Module1.FinalList = new IDocument[Module1.ArraySz + 1];
                             Module1.FolderList = new string[Module1.ArraySz + 1];
                         }
                         inx++;
@@ -589,107 +601,128 @@ namespace DocEntry
                 //'    sClasses)
                 //On Error Resume Next
                 //Module1.goPropDescs = (IDMObjects.PropertyDescriptions)Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, sClasses);
-                Module1.goPropDescs =  Module1.oLibrary.FilterPropertyDescriptions(IDMObjects.idmObjectType.idmObjTypeDocument, sClasses);
-                //On Error Resume Next
-                Module1.oDocument = (IDMObjects.Document)Module1.oLibrary.CreateObject(IDMObjects.idmObjectType.idmObjTypeDocument, sClasses[0], Type.Missing, Type.Missing, Type.Missing);
-                //If Not goPropDescs("Cliente").GetState(idmPropReadOnly) Then
-                if (Module1.XFecha.Length > 0)
+                Module1.goPropDescs =  ceConnection.getPropertiesDescriptions(Module1.oLibrary, sClasses);
+            //On Error Resume Next
+            //Module1.oDocument = (IDMObjects.Document)Module1.oLibrary.CreateObject(IDMObjects.idmObjectType.idmObjTypeDocument, sClasses[0], Type.Missing, Type.Missing, Type.Missing);
+            Module1.oDocument = (IDocument) Module1.oLibrary.CreateObject( sClasses[0]);
+            //If Not goPropDescs("Cliente").GetState(idmPropReadOnly) Then
+            if (Module1.XFecha.Length > 0)
                 {
-                    Module1.oDocument.Properties[Module1.goPropDescs["FechaOperacion"].Name].Value = Module1.XFecha;
-                }
-                if (!Module1.goPropDescs["NumCliente"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                //Module1.oDocument.Properties[Module1.goPropDescs["FechaOperacion"].Name].Value = Module1.XFecha;
+                Module1.oDocument.Properties.GetProperty("FechaOperacion").SetObjectValue( Module1.XFecha);
+            }
+                //if (!Module1.goPropDescs["NumCliente"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtCliente.Text) > 0 && TxtCliente.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["NumCliente"].Name].Value = TxtCliente.Text.Trim();
-                    }
+                    // Module1.oDocument.Properties[Module1.goPropDescs["NumCliente"].Name].Value = TxtCliente.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("NumCliente").SetObjectValue( TxtCliente.Text.Trim());
                 }
-                if (!Module1.goPropDescs["Folio"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                }
+                //if (!Module1.goPropDescs["Folio"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtFolioUOC.Text) > 0 && TxtFolioUOC.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["Folio"].Name].Value = TxtFolioUOC.Text.Trim();
-                    }
+                    //Module1.oDocument.Properties[Module1.goPropDescs["Folio"].Name].Value = TxtFolioUOC.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("Folio").SetObjectValue(TxtFolioUOC.Text.Trim());
                 }
-                if (!Module1.goPropDescs["TipoDoc"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                }
+                //if (!Module1.goPropDescs["TipoDoc"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (CboTipoDoc.SelectedIndex > -1)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["TipoDoc"].Name].Value = Module1.XTipoDoc; //CboTipoDoc.ItemData(CboTipoDoc.ListIndex)
-                    }
+                    //Module1.oDocument.Properties[Module1.goPropDescs["TipoDoc"].Name].Value = Module1.XTipoDoc; //CboTipoDoc.ItemData(CboTipoDoc.ListIndex)
+                    Module1.oDocument.Properties.GetProperty("TipoDoc").SetObjectValue(Module1.XTipoDoc);
                 }
-                if (!Module1.goPropDescs["UOC"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                }
+                //if (!Module1.goPropDescs["UOC"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(CboUOC.Text) > 0 && CboUOC.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["UOC"].Name].Value = CboUOC.Text.Trim();
-                    }
+                    //Module1.oDocument.Properties[Module1.goPropDescs["UOC"].Name].Value = CboUOC.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("UOC").SetObjectValue(CboUOC.Text.Trim());
                 }
-                if (!Module1.goPropDescs["Contrato"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                }
+                //if (!Module1.goPropDescs["Contrato"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtContrato.Text) > 0 && TxtContrato.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["Contrato"].Name].Value = TxtContrato.Text.Trim();
-                    }
+                        //Module1.oDocument.Properties[Module1.goPropDescs["Contrato"].Name].Value = TxtContrato.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("Contrato").SetObjectValue(TxtContrato.Text.Trim());
                 }
-                if (!Module1.goPropDescs["Linea"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                }
+                //if (!Module1.goPropDescs["Linea"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtLinea.Text) > 0 && TxtLinea.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtLinea.Text.Trim();
-                    }
+                        //Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtLinea.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("Linea").SetObjectValue(TxtLinea.Text.Trim());
+
                 }
-                if (!Module1.goPropDescs["FolioS403"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            }
+                //if (!Module1.goPropDescs["FolioS403"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtFolioS403.Text) > 0 && TxtFolioS403.Text.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["FolioS403"].Name].Value = TxtFolioS403.Text.Trim();
-                    }
+                       // Module1.oDocument.Properties[Module1.goPropDescs["FolioS403"].Name].Value = TxtFolioS403.Text.Trim();
+                    Module1.oDocument.Properties.GetProperty("FolioS403").SetObjectValue(TxtFolioS403.Text.Trim());
+
                 }
-                if (!Module1.goPropDescs["Status"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            }
+                //if (!Module1.goPropDescs["Status"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
-                    Module1.oDocument.Properties[Module1.goPropDescs["Status"].Name].Value = 1;
-                }
-                if (!Module1.goPropDescs["Producto"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
-                {
+                    //Module1.oDocument.Properties[Module1.goPropDescs["Status"].Name].Value = 1;
+                Module1.oDocument.Properties.GetProperty("Status").SetObjectValue(1);
+
+            }
+            //if (!Module1.goPropDescs["Producto"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            {
                     if (!Convert.IsDBNull(Module1.XProd) && Strings.Len(Module1.XProd) > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["Producto"].Name].Value = Module1.XProd;
-                    }
+                        //Module1.oDocument.Properties[Module1.goPropDescs["Producto"].Name].Value = Module1.XProd;
+                    Module1.oDocument.Properties.GetProperty("Producto").SetObjectValue(Module1.XProd);
+
                 }
-                if (!Module1.goPropDescs["Instrumento"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            }
+                //if (!Module1.goPropDescs["Instrumento"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (!Convert.IsDBNull(Module1.XInst) && Strings.Len(Module1.XInst) > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["Instrumento"].Name].Value = Module1.XInst;
-                    }
+                       // Module1.oDocument.Properties[Module1.goPropDescs["Instrumento"].Name].Value = Module1.XInst;
+                    Module1.oDocument.Properties.GetProperty("Instrumento").SetObjectValue(Module1.XInst);
+
                 }
-                if (!Module1.goPropDescs["XfolioS"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            }
+                //if (!Module1.goPropDescs["XfolioS"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (!Convert.IsDBNull(Module1.XFile) && Strings.Len(Module1.XFile) > 0)
                     {
                         //oDocument.Properties(goPropDescs("XfilioS").Name).Value = XFile
                     }
                 }
-                if (!Module1.goPropDescs["CalificaOnDemand"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                //if (!Module1.goPropDescs["CalificaOnDemand"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (!Convert.IsDBNull(Module1.XCalifOnd) && Strings.Len(Module1.XCalifOnd) > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["CalificaOnDemand"].Name].Value = Module1.XCalifOnd;
-                    }
+                        //Module1.oDocument.Properties[Module1.goPropDescs["CalificaOnDemand"].Name].Value = Module1.XCalifOnd;
+                    Module1.oDocument.Properties.GetProperty("CalificaOnDemand").SetObjectValue(Module1.XCalifOnd);
+
                 }
-                if (!Module1.goPropDescs["F_PAGES"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+            }
+                //if (!Module1.goPropDescs["F_PAGES"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     //Module1.oDocument.Properties[Module1.goPropDescs["F_PAGES"].Name].Value = ViewerCtrl1.Pages.Count;
                 }
                 //AVG Ini Sept-2015
-                if (!Module1.goPropDescs["XfolioP"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
+                //if (!Module1.goPropDescs["XfolioP"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(Module1.XSubFolio) > 0 && Module1.XSubFolio.Trim().Length > 0)
                     {
-                        Module1.oDocument.Properties[Module1.goPropDescs["XfolioP"].Name].Value = Module1.XSubFolio;
-                    }
+                       // Module1.oDocument.Properties[Module1.goPropDescs["XfolioP"].Name].Value = Module1.XSubFolio;
+                    Module1.oDocument.Properties.GetProperty("XfolioP").SetObjectValue(Module1.XSubFolio);
+
                 }
+            }
                 //AVG Fin Sept-2015
                 Module1.FinalList[Module1.CurrentDocInx] = Module1.oDocument;
                 if (Module1.DocList[Module1.CurrentDocInx].CommitFlag == CommitValues.Commit)
@@ -721,11 +754,11 @@ namespace DocEntry
                 // Enable the following tabs for editing
                 IDMObjects.idmTabSelect tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectGeneral) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectDocPreview));
 
-                Module1.oDocument.SetPropertiesDialogEditMode(tabSel, true);
+                //Module1.oDocument.SetPropertiesDialogEditMode(tabSel, true);
 
                 // Disable the following tabs for editing
                 tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectSecurity) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectProperties));
-                Module1.oDocument.SetPropertiesDialogEditMode(tabSel, false);
+                //Module1.oDocument.SetPropertiesDialogEditMode(tabSel, false);
 
                 //*****************************************************************************
                 Module1.FolderList[Module1.CurrentDocInx] = "";
@@ -1006,10 +1039,11 @@ namespace DocEntry
         {
             string Temp = String.Empty;
             int inx = 0;
-            IDMObjects.Folder oFolder;
-            oFolder = new IDMObjects.Folder();
-            IDMObjects.Library oLib;
-            oLib = new IDMObjects.Library();
+            //IDMObjects.Folder oFolder;
+            IFolder oFolder;
+            //oFolder = new IDMObjects.Folder();
+            //IObjectStore oLib;
+            //oLib = new IDMObjects.Library();
             //IDMObjects.Folder oFolder = null;
             //IDMObjects.Library oLib = null;
 
@@ -1097,7 +1131,8 @@ namespace DocEntry
                         if (Module1.gbISLogOff)
                         {
                             //MsgBox "salva docto"
-                            Module1.oDocument.SaveNew(Module1.XArchivo, IDMObjects.idmSaveNewOptions.idmDocSaveNewKeep); 
+                            //Module1.oDocument.SaveNew(Module1.XArchivo, IDMObjects.idmSaveNewOptions.idmDocSaveNewKeep); 
+                            Module1.oDocument.Save(FileNet.Api.Constants.RefreshMode.REFRESH);// New(Module1.XArchivo, IDMObjects.idmSaveNewOptions.idmDocSaveNewKeep);
                             //Module1.FinalList[inx].SaveNew(Module1.XArchivo, IDMObjects.idmSaveNewOptions.idmDocSaveNewKeep);
 
                             //Call FinalList(inx).SaveNew(DocList(inx).fileName, idmDocSaveNewConfirmationUI + _
@@ -1107,8 +1142,9 @@ namespace DocEntry
                             //  Call FinalList(inx).SaveNew(DocList(inx).FileName)
                             if (Module1.FolderList[inx] != "")
                             {
-                                oFolder = (IDMObjects.Folder)Module1.oLibrary.GetObject(IDMObjects.idmObjectType.idmObjTypeFolder, Module1.FolderList[inx], null, null, null);
-                                oFolder.File(Module1.FinalList[inx]);
+                                //oFolder = (IDMObjects.Folder)Module1.oLibrary.GetObject(IDMObjects.idmObjectType.idmObjTypeFolder, Module1.FolderList[inx], null, null, null);
+                                oFolder = (IFolder)Module1.oLibrary.GetObject("Folder", Module1.FolderList[inx]);
+                                oFolder.File(Module1.FinalList[inx],FileNet.Api.Constants.AutoUniqueName.AUTO_UNIQUE,"doc",FileNet.Api.Constants.DefineSecurityParentage.DEFINE_SECURITY_PARENTAGE);
                             }
 
                         }
@@ -1174,10 +1210,11 @@ namespace DocEntry
 
                     Module1.oLibrary = null;
 
-                    oLib = (IDMObjects.Library)((IDMObjects.IFnNeighborhoodDual)Module1.oNeighborhood).get_DefaultLibrary(); // Toma la librería default                        
-                    MyLogon(oLib); // Hace LOGON a librería
+                   // oLib = (IDMObjects.Library)((IDMObjects.IFnNeighborhoodDual)Module1.oNeighborhood).get_DefaultLibrary(); // Toma la librería default                        
+                   //oLib=ceConnection.
+                    //MyLogon(oLib); // Hace LOGON a librería
 
-                    if (!(oLib.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn)))
+                    if (oLib==null || oLib.GetConnection()==null)
                     {
                         MessageBox.Show(this, "Error en logon a librería", Application.ProductName);
                         Module1.gbISLogOff = false;
@@ -1299,7 +1336,8 @@ namespace DocEntry
                 Module1.gcHeadings = new Collection();
                 Module1.gcPropNames = new Collection();
                 SetLVHeaders(Module1.gcHeadings, Module1.gcPropNames);
-                Module1.clsQuery.BindToLib(Module1.oLibrary, Module1.gcHeadings, sClass);
+                //Module1.clsQuery.BindToLib(Module1.oLibrary, Module1.gcHeadings, sClass);
+                ceConnection.executeQuery(Module1.oLibrary, sClass);
                 Cursor = Cursors.WaitCursor;
 
                 //Module1.clsQuery.ExecQuery(ref this.IDMListView1, sWhere, "", 20, (DocEntry.FormMain)this);
@@ -1906,7 +1944,7 @@ namespace DocEntry
 
         private void BtnSalvar_Click(Object eventSender, EventArgs eventArgs)
         {
-            Module1.oDocument.Save();
+            Module1.oDocument.Save(FileNet.Api.Constants.RefreshMode.REFRESH);
             //IDMListView.ClearItems
             //IDMViewerCtrl1.Document = oDocument
         }
@@ -1978,12 +2016,15 @@ namespace DocEntry
 
         }
 
+        IObjectStore oLib = null;
+
         private void FormMain_Load(Object eventSender, EventArgs eventArgs)
         {
             //Dim oLib As New IDMObjects.Library
-            Module1.oLibraries = (IDMObjects.ObjectSet)Module1.oNeighborhood.Libraries;
-            IDMObjects.Library oLib = (IDMObjects.Library)Activator.CreateInstance(Type.GetTypeFromProgID("idmObjects.Library"));
-            oLib.SystemType = IDMObjects.idmSysTypeOptions.idmSysTypeIS;
+            //Module1.oLibraries = (IDMObjects.ObjectSet)Module1.oNeighborhood.Libraries;
+            //IDMObjects.Library oLib = (IDMObjects.Library)Activator.CreateInstance(Type.GetTypeFromProgID("idmObjects.Library"));
+            //oLib.SystemType = IDMObjects.idmSysTypeOptions.idmSysTypeIS;
+            
             byte Bande = 0;            
             this.WindowState = FormWindowState.Maximized;
             Module1.DocList[0].fileName = "";
@@ -2054,14 +2095,17 @@ namespace DocEntry
                 if ((((IDMObjects.Library)Module1.oLibraries[i]).Name) == "DefaultIMS:" + Libreria)
                 {
                     Bande = 1;
-                    oLib = (IDMObjects.Library)Module1.oLibraries[i];
+                    //oLib = (IDMObjects.Library)Module1.oLibraries[i];
+                    ceConnection.EstablishCredentials(Module1.gfSettings.txtIMSLibName.Text, Module1.gfSettings.txtIMSPassword.Text,
+                        Module1.gfSettings.textResUrl.Text, Module1.gfSettings.txtIMSLibName.Text);
+                    oLib = ceConnection.FetchOS(Libreria);
                     break;
                 }
             }
 
             if (Bande == 0)
             {
-                oLib.Name = Libreria;
+                //oLib.Name = Libreria;
             }
 
             //AVG Ini Sept-2015
@@ -2076,8 +2120,9 @@ namespace DocEntry
                 this.Close();
                 Environment.Exit(0);
             }
-            MyLogon(oLib); // Hace LOGON a librería
-            if (!(oLib.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn)))
+            //MyLogon(oLib); // Hace LOGON a librería
+            //if (!(oLib.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn)))
+            if (oLib==null || oLib.GetConnection()!=null)
             {
                 MessageBox.Show(this, "Error en logon a librería", Application.ProductName);
                 Module1.gbISLogOff = false;
@@ -2199,9 +2244,9 @@ namespace DocEntry
         {
             //Unload PropertyForm
             //Module1.oErrManager = null;
-            if (Module1.oLibrary.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn))
+           // if (Module1.oLibrary.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn))
             {
-                Module1.oLibrary.Logoff();
+             //   Module1.oLibrary.Logoff();
             }
             Module1.XArchivo = Module1.TmpImg + "img1.tif";
             try
@@ -2237,7 +2282,7 @@ namespace DocEntry
 
                 if (MessageBox.Show(this, "Desea Editar la Imagen Seleccionada ?", Application.ProductName, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    Cade = Module1.oDocument.GetCachedFile(0, "", null);
+                    //Cade = Module1.oDocument.GetCachedFile(0, "", null);
                     cade2 = Cade;
                     Cade1 = Module1.GetFileName(ref cade2);
                     PosPunto = (byte)Cade1.IndexOf(".FOB");
@@ -2754,7 +2799,7 @@ namespace DocEntry
             // These arrays will be resized after files are loaded...
             Module1.ArraySz = Module1.InitArraySz;
             Module1.DocList = new DocInfo[Module1.ArraySz + 1];
-            Module1.FinalList = new IDMObjects.Document[Module1.ArraySz + 1];
+            //Module1.FinalList = new IDMObjects.Document[Module1.ArraySz + 1];
             Module1.FolderList = new string[Module1.ArraySz + 1];
         }
 

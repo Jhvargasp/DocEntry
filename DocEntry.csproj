@@ -88,6 +88,10 @@
     <Reference Include="AxInterop.ScanLibCtl">
       <HintPath>obj\Release\AxInterop.ScanLibCtl.dll</HintPath>
     </Reference>
+    <Reference Include="FileNet.Api, Version=5.0.0.0, Culture=neutral, PublicKeyToken=63fc2fb3fdeef4f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\minasdll\FileNet.Api.dll</HintPath>
+    </Reference>
     <Reference Include="IGWinFormsV15n, Version=15.1.0.0, Culture=neutral, PublicKeyToken=90cb718bcf54d1b2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CreditoEmpresarial\OperaNET\IGWinFormsV15n.dll</HintPath>
@@ -214,6 +218,7 @@
       <SubType>Code</SubType>
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulos\CEConnection.cs" />
     <Compile Include="modulos\DocEntry.cs">
       <SubType>Code</SubType>
     </Compile>
