@@ -68,7 +68,7 @@ namespace DocEntry
 	//Required by the Windows Form Designer
 	private System.ComponentModel.IContainer components;
 	public System.Windows.Forms.ToolTip ToolTip1;
-	public  AxComCtl2.AxAnimation Animation1;
+	//public  AxComCtl2.AxAnimation Animation1;
 	public  System.Windows.Forms.TextBox Text1;
 	public  System.Windows.Forms.Label txtMax;
 	public  System.Windows.Forms.Label txtMin;
@@ -82,21 +82,23 @@ namespace DocEntry
         this.components = new System.ComponentModel.Container();
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProg));
         this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-        this.Animation1 = new AxComCtl2.AxAnimation();
+        //this.Animation1 = new AxComCtl2.AxAnimation();
         this.Text1 = new System.Windows.Forms.TextBox();
         this.txtMax = new System.Windows.Forms.Label();
         this.txtMin = new System.Windows.Forms.Label();
         this.Label1 = new System.Windows.Forms.Label();
-        ((System.ComponentModel.ISupportInitialize)(this.Animation1)).BeginInit();
+        //((System.ComponentModel.ISupportInitialize)(this.Animation1)).BeginInit();
         this.SuspendLayout();
         // 
         // Animation1
         // 
+        /*
         this.Animation1.Location = new System.Drawing.Point(200, 48);
         this.Animation1.Name = "Animation1";
         this.Animation1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Animation1.OcxState")));
         this.Animation1.Size = new System.Drawing.Size(137, 41);
         this.Animation1.TabIndex = 3;
+        */
         // 
         // Text1
         // 
@@ -157,7 +159,7 @@ namespace DocEntry
         this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
         this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
         this.ClientSize = new System.Drawing.Size(508, 173);
-        this.Controls.Add(this.Animation1);
+        //this.Controls.Add(this.Animation1);
         this.Controls.Add(this.Text1);
         this.Controls.Add(this.txtMax);
         this.Controls.Add(this.txtMin);
@@ -169,7 +171,7 @@ namespace DocEntry
         this.Name = "FormProg";
         this.RightToLeft = System.Windows.Forms.RightToLeft.No;
         this.Text = "Performing Document Committal...";
-        ((System.ComponentModel.ISupportInitialize)(this.Animation1)).EndInit();
+        //((System.ComponentModel.ISupportInitialize)(this.Animation1)).EndInit();
         this.ResumeLayout(false);
 
 	}

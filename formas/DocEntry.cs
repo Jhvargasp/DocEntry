@@ -291,12 +291,12 @@ namespace DocEntry
                                 }
                             }
                             //AVG Fin Sept-2015
-                            ImgAdmin1.Image = null;
+                            //ImgAdmin1.Image = null;
                             Module1.DocList[Index].fileName = "";
-                            if (ImgScan1.Image != string.Empty) {
+                            /*if (ImgScan1.Image != string.Empty) {
                                 ImgScan1.Image = string.Empty;
                             }
-                            /*
+                            
                             if ( ViewerCtrl2.Visible ==  false)
                             {
                                 ViewerCtrl1.PageNumber = 1;
@@ -952,12 +952,12 @@ namespace DocEntry
                 ViewerCtrl1.Refresh();
                 ImgAdmin1.Image = Module1.XArchivo;
                 ViewerCtrl1.PageNumber = 1;*/
-                ImgAdmin1.DeletePages(Pag, 1);
+                //ImgAdmin1.DeletePages(Pag, 1);
                 Pause(1); 
                 Application.DoEvents();
                 Application.DoEvents();
                 //ViewerCtrl1.DocumentFilename = Module1.XArchivo;
-                ImgAdmin1.Image = null;
+                //ImgAdmin1.Image = null;
                 /*ViewerCtrl1.DocumentFilename = "";
                 ViewerCtrl1.DocumentFilename = Module1.XArchivo;
                 ViewerCtrl1.Update();
@@ -1142,13 +1142,13 @@ namespace DocEntry
                     this.Visible = true;
                     //ViewerCtrl1.DocumentFilename = String.Empty;
                     //ViewerCtrl2.DocumentFilename = String.Empty;
-                    ImgAdmin1.Image = null;
+                    //ImgAdmin1.Image = null;
                     TxtFolioUOC.Text = String.Empty;
                     Module1.DocList[inx].fileName = "";
                     Module1.TotalDocs = 0;
                     CommCount = 0;
                     Module1.CurrentDocInx = 0;
-                    ImgScan1.Image = String.Empty;
+                    //ImgScan1.Image = String.Empty;
                     string tempRefParam = Module1.TmpImg + "Img*.tif";
                     Module1.KillFile(ref tempRefParam);
                     if (File.Exists(Module1.XArchivo))
@@ -1516,12 +1516,12 @@ namespace DocEntry
             catch { }
             try
             {
-                ImgScan1.Image = String.Empty;
+                //ImgScan1.Image = String.Empty;
             }
             catch { }
             try
             {
-                ImgAdmin1.Image = String.Empty;
+                //ImgAdmin1.Image = String.Empty;
             }
             catch { }
             //catch (Exception ER1) { }
@@ -1659,12 +1659,12 @@ namespace DocEntry
             catch { }
             try
             {
-                ImgScan1.Image = String.Empty;
+                //ImgScan1.Image = String.Empty;
             }
             catch { }
             try
             {
-                ImgAdmin1.Image = String.Empty;
+                //ImgAdmin1.Image = String.Empty;
             }
             catch { }
             //catch (Exception ER1) { }
@@ -1763,7 +1763,7 @@ namespace DocEntry
 
 
                 //} catch { }
-                ImgAdmin1.Image = ArchTemp;
+                //ImgAdmin1.Image = ArchTemp;
                 //ImgAdmin1.Refresh();
                 Application.DoEvents();
                 Application.DoEvents();
@@ -1771,8 +1771,8 @@ namespace DocEntry
                     try
                     {
                         Application.DoEvents();
-                        ImgAdmin1.Insert(Module1.XArchivo, 1, Pag + 1, Pag1);
-                        ImgAdmin1.Image = null;
+                        //ImgAdmin1.Insert(Module1.XArchivo, 1, Pag + 1, Pag1);
+                        //ImgAdmin1.Image = null;
                         Application.DoEvents();
                         Application.DoEvents();
                     } catch { }
@@ -2302,12 +2302,14 @@ namespace DocEntry
             //On Error Resume Next;
             Application.DoEvents();
             Application.DoEvents();
-            try { ImgScan1.CloseScanner(); }
+            try {
+                //ImgScan1.CloseScanner(); 
+            }
             catch { }
             Pause(2);
             Application.DoEvents();
             Application.DoEvents();
-            ImgScan1.Image = String.Empty; 
+            //ImgScan1.Image = String.Empty; 
             //On Error Resume Next
             //ImgScan1.ResetScanner
             //ImgScan1.StopScan
@@ -2325,8 +2327,8 @@ namespace DocEntry
         {
             Application.DoEvents();
             Application.DoEvents();
-            ImgAdmin1.Image = string.Empty;
-            ImgScan1.Image = string.Empty;
+            //ImgAdmin1.Image = string.Empty;
+            //ImgScan1.Image = string.Empty;
             if (BandeInsert == 0)
             {
                 //ViewerCtrl1.DocumentFilename = String.Empty;
@@ -2355,7 +2357,7 @@ namespace DocEntry
                 }
                 catch { }
             }
-
+            /*
             ImgScan1.ShowSelectScanner();
             ImgScan1.OpenScanner();
 
@@ -2366,7 +2368,8 @@ namespace DocEntry
             try
             {
                 ImgScan1.StartScan();
-            }  catch { }
+            } < catch { }
+            */
         }
 
         private void TxtCliente_TextChanged(Object eventSender, EventArgs eventArgs)
@@ -2557,11 +2560,11 @@ namespace DocEntry
             catch { }
             try
             {
-                ImgScan1.Image = String.Empty;
+              //  ImgScan1.Image = String.Empty;
             } catch {}
             try
             {
-                ImgAdmin1.Image = String.Empty;
+                //ImgAdmin1.Image = String.Empty;
             } catch { }
             //catch (Exception ER1) { }
             //try { ViewerCtrl1.DocumentFilename = String.Empty; }

@@ -54,7 +54,7 @@ namespace DocEntry
         //Required by the Windows Form Designer
         private System.ComponentModel.IContainer components;
         public System.Windows.Forms.ToolTip ToolTip1;
-        public AxScanLibCtl.AxImgScan ImgScan1;
+        //public AxScanLibCtl.AxImgScan ImgScan1;
         // linea comentada por referencia a objetos errados.
         //AIS319 - DVega: Llamada a referencia no valida.
         //public  AxGEAR81Lib.AxGear81_ Gear1;
@@ -98,7 +98,7 @@ namespace DocEntry
         public System.Windows.Forms.Button BtnNext;
         public System.Windows.Forms.Button BtnPrevious;
         public System.Windows.Forms.Button BtnDelete;
-        public AxAdminLibCtl.AxImgAdmin ImgAdmin1;
+       // public AxAdminLibCtl.AxImgAdmin ImgAdmin1;
         //NOTE: The following procedure is required by the Windows Form Designer
         //It can be modified using the Windows Form Designer.
         //Do not modify it using the code editor.
@@ -157,9 +157,9 @@ namespace DocEntry
             this.viewImage1 = new ViewImages.ViewImage();
             //this.ViewerCtrl1 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
             //this.ViewerCtrl2 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
-            this.ImgScan1 = new AxScanLibCtl.AxImgScan();
+            //this.ImgScan1 = new AxScanLibCtl.AxImgScan();
             //this.IDMListView1 = new AxIDMListView.AxIDMListView();
-            this.ImgAdmin1 = new AxAdminLibCtl.AxImgAdmin();
+            //this.ImgAdmin1 = new AxAdminLibCtl.AxImgAdmin();
             this.SSTab1.SuspendLayout();
             this._SSTab1_TabPage0.SuspendLayout();
             this.SSPanel1.SuspendLayout();
@@ -172,9 +172,9 @@ namespace DocEntry
             this.SPCont.SuspendLayout();
             //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).BeginInit();
             //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).BeginInit();
             //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnPrint
@@ -908,6 +908,7 @@ namespace DocEntry
             // 
             // ImgScan1
             // 
+            /*
             this.ImgScan1.Enabled = true;
             this.ImgScan1.Location = new System.Drawing.Point(11, 658);
             this.ImgScan1.Name = "ImgScan1";
@@ -916,6 +917,7 @@ namespace DocEntry
             this.ImgScan1.TabIndex = 0;
             this.ImgScan1.ScanStarted += new System.EventHandler(this.ImgScan1_ScanStarted);
             this.ImgScan1.ScanDone += new System.EventHandler(this.ImgScan1_ScanDone);
+            */
             // 
             // IDMListView1
             // 
@@ -926,16 +928,18 @@ namespace DocEntry
             this.IDMListView1.Size = new System.Drawing.Size(555, 97);
             this.IDMListView1.TabIndex = 37;
             this.IDMListView1.DblClick += new System.EventHandler(this.IDMListView1_DblClick);
-            */
+            
             // 
             // ImgAdmin1
             // 
+
             this.ImgAdmin1.Enabled = true;
             this.ImgAdmin1.Location = new System.Drawing.Point(6, 393);
             this.ImgAdmin1.Name = "ImgAdmin1";
             this.ImgAdmin1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ImgAdmin1.OcxState")));
             this.ImgAdmin1.Size = new System.Drawing.Size(49, 27);
             this.ImgAdmin1.TabIndex = 23;
+            */
             // 
             // FormMain
             // 
@@ -979,9 +983,9 @@ namespace DocEntry
             this.SPCont.ResumeLayout(false);
             //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).EndInit();
             //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).EndInit();
             //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
