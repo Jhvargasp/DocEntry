@@ -154,27 +154,33 @@ namespace DocEntry
             this.CommonDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.LblMsg = new System.Windows.Forms.Label();
             this.SPCont = new System.Windows.Forms.SplitContainer();
-            this.viewImage1 = new ViewImages.ViewImage();
-            //this.ViewerCtrl1 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
-            //this.ViewerCtrl2 = new AxIDMViewerCtrl.AxIDMViewerCtrl();
-            //this.ImgScan1 = new AxScanLibCtl.AxImgScan();
-            //this.IDMListView1 = new AxIDMListView.AxIDMListView();
-            //this.ImgAdmin1 = new AxAdminLibCtl.AxImgAdmin();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SSTab1.SuspendLayout();
             this._SSTab1_TabPage0.SuspendLayout();
             this.SSPanel1.SuspendLayout();
-            this._SSTab1_TabPage1.SuspendLayout();
             this.X.SuspendLayout();
             this.Frame1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SPCont)).BeginInit();
             this.SPCont.Panel1.SuspendLayout();
-            this.SPCont.Panel2.SuspendLayout();
             this.SPCont.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnPrint
@@ -705,7 +711,6 @@ namespace DocEntry
             // 
             // _SSTab1_TabPage1
             // 
-//            this._SSTab1_TabPage1.Controls.Add(this.IDMListView1);
             this._SSTab1_TabPage1.Location = new System.Drawing.Point(4, 4);
             this._SSTab1_TabPage1.Name = "_SSTab1_TabPage1";
             this._SSTab1_TabPage1.Size = new System.Drawing.Size(561, 104);
@@ -860,86 +865,126 @@ namespace DocEntry
             // 
             // SPCont.Panel1
             // 
-            this.SPCont.Panel1.Controls.Add(this.viewImage1);
-//            this.SPCont.Panel1.Controls.Add(this.ViewerCtrl1);
-            // 
-            // SPCont.Panel2
-            // 
-  //          this.SPCont.Panel2.Controls.Add(this.ViewerCtrl2);
+            this.SPCont.Panel1.Controls.Add(this.dataGridView1);
             this.SPCont.Panel2Collapsed = true;
             this.SPCont.Size = new System.Drawing.Size(1010, 607);
             this.SPCont.SplitterDistance = 25;
             this.SPCont.SplitterWidth = 2;
             this.SPCont.TabIndex = 26;
             // 
-            // viewImage1
+            // dataGridView1
             // 
-            this.viewImage1.AutoScroll = true;
-            this.viewImage1.AutoSize = true;
-            this.viewImage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewImage1.Location = new System.Drawing.Point(0, 0);
-            this.viewImage1.Name = "viewImage1";
-            this.viewImage1.pArchivo = "";
-            this.viewImage1.Size = new System.Drawing.Size(1006, 603);
-            this.viewImage1.TabIndex = 27;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column17});
+            this.dataGridView1.Location = new System.Drawing.Point(-2, -2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(562, 217);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // ViewerCtrl1
+            // Column1
             // 
-            /*
-            this.ViewerCtrl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ViewerCtrl1.Enabled = true;
-            this.ViewerCtrl1.Location = new System.Drawing.Point(0, 0);
-            this.ViewerCtrl1.Name = "ViewerCtrl1";
-            this.ViewerCtrl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ViewerCtrl1.OcxState")));
-            this.ViewerCtrl1.Size = new System.Drawing.Size(1006, 603);
-            this.ViewerCtrl1.TabIndex = 26;
+            this.Column1.HeaderText = "ID Imagen";
+            this.Column1.Name = "Column1";
             // 
-            // ViewerCtrl2
+            // Column2
             // 
-            this.ViewerCtrl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ViewerCtrl2.Enabled = true;
-            this.ViewerCtrl2.Location = new System.Drawing.Point(0, 0);
-            this.ViewerCtrl2.Name = "ViewerCtrl2";
-            this.ViewerCtrl2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ViewerCtrl2.OcxState")));
-            this.ViewerCtrl2.Size = new System.Drawing.Size(92, 96);
-            this.ViewerCtrl2.TabIndex = 13;
-            this.ViewerCtrl2.Visible = false;
-            */
+            this.Column2.HeaderText = "XFolioP";
+            this.Column2.Name = "Column2";
             // 
-            // ImgScan1
+            // Column3
             // 
-            /*
-            this.ImgScan1.Enabled = true;
-            this.ImgScan1.Location = new System.Drawing.Point(11, 658);
-            this.ImgScan1.Name = "ImgScan1";
-            this.ImgScan1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ImgScan1.OcxState")));
-            this.ImgScan1.Size = new System.Drawing.Size(61, 47);
-            this.ImgScan1.TabIndex = 0;
-            this.ImgScan1.ScanStarted += new System.EventHandler(this.ImgScan1_ScanStarted);
-            this.ImgScan1.ScanDone += new System.EventHandler(this.ImgScan1_ScanDone);
-            */
+            this.Column3.HeaderText = "FolioS403";
+            this.Column3.Name = "Column3";
             // 
-            // IDMListView1
+            // Column4
             // 
-            /*
-            this.IDMListView1.Location = new System.Drawing.Point(3, 4);
-            this.IDMListView1.Name = "IDMListView1";
-            this.IDMListView1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("IDMListView1.OcxState")));
-            this.IDMListView1.Size = new System.Drawing.Size(555, 97);
-            this.IDMListView1.TabIndex = 37;
-            this.IDMListView1.DblClick += new System.EventHandler(this.IDMListView1_DblClick);
-            
+            this.Column4.HeaderText = "SecLote";
+            this.Column4.Name = "Column4";
             // 
-            // ImgAdmin1
+            // Column5
             // 
-
-            this.ImgAdmin1.Enabled = true;
-            this.ImgAdmin1.Location = new System.Drawing.Point(6, 393);
-            this.ImgAdmin1.Name = "ImgAdmin1";
-            this.ImgAdmin1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("ImgAdmin1.OcxState")));
-            this.ImgAdmin1.Size = new System.Drawing.Size(49, 27);
-            this.ImgAdmin1.TabIndex = 23;
-            */
+            this.Column5.HeaderText = "Instrumento";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Producto";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "XFolioS";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "CalificaOnDemand";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "FechaOperacion";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "StatusImagen";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Status";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Linea";
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Contrato";
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "NumCliente";
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Folio";
+            this.Column15.Name = "Column15";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "TipoDoc";
+            this.Column16.Name = "Column16";
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "UOC";
+            this.Column17.Name = "Column17";
             // 
             // FormMain
             // 
@@ -949,7 +994,6 @@ namespace DocEntry
             this.ClientSize = new System.Drawing.Size(1017, 720);
             this.Controls.Add(this.LblMsg);
             this.Controls.Add(this.SPCont);
-//            this.Controls.Add(this.ImgScan1);
             this.Controls.Add(this.SSTab1);
             this.Controls.Add(this.BtnSalvar);
             this.Controls.Add(this.X);
@@ -957,7 +1001,6 @@ namespace DocEntry
             this.Controls.Add(this.BtnNext);
             this.Controls.Add(this.BtnPrevious);
             this.Controls.Add(this.BtnDelete);
-//            this.Controls.Add(this.ImgAdmin1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -973,19 +1016,12 @@ namespace DocEntry
             this._SSTab1_TabPage0.ResumeLayout(false);
             this.SSPanel1.ResumeLayout(false);
             this.SSPanel1.PerformLayout();
-            this._SSTab1_TabPage1.ResumeLayout(false);
             this.X.ResumeLayout(false);
             this.Frame1.ResumeLayout(false);
             this.SPCont.Panel1.ResumeLayout(false);
-            this.SPCont.Panel1.PerformLayout();
-            this.SPCont.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SPCont)).EndInit();
             this.SPCont.ResumeLayout(false);
-            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl1)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ViewerCtrl2)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ImgScan1)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.IDMListView1)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.ImgAdmin1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -996,11 +1032,27 @@ namespace DocEntry
         private System.Windows.Forms.SplitContainer SPCont;
         //public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl2;
         //public AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrl1;
-        private ViewImages.ViewImage viewImage1;
+        //private ViewImages.ViewImage viewImage1;
         private System.Windows.Forms.ComboBox CboResol;
         private System.Windows.Forms.Button BtnPDFtoTIFF;
         public System.Windows.Forms.Button BtnSaveas;
-        
-
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
     }
 }

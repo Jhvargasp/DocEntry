@@ -2,7 +2,7 @@ using System.Globalization;
 using Microsoft.VisualBasic;
 using System.IO;
 using System.Drawing;
-using System.Drawing.Imaging; 
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System;
 
@@ -23,6 +23,7 @@ using FileNet.Api.Authentication;
 using FileNet.Api.Meta;
 using static FileNet.Api.Core.Factory;
 using DocEntry.modulos;
+using DocEntry.formas;
 //using ReadQR;
 
 
@@ -39,6 +40,7 @@ namespace DocEntry
         private int BandeInsert = 0;
         private byte Bande = 0;
         int CommCount = 0; // Count of docs marked for committal
+        Viewer viewer = new Viewer(); 
         CEConnection ceConnection = new CEConnection();
         //private AxIDMViewerCtrl.AxIDMViewerCtrl ViewerCtrlX;
 
@@ -61,14 +63,15 @@ namespace DocEntry
             Module1.goPropDescs = ceConnection.getPropertiesDescriptions(Module1.oLibrary, asClasses);
             //IDMListView1.ClearColumnHeaders(Module1.oLibrary);
             //IDMListView1.ClearItems();
-            foreach (IDMObjects.PropertyDescription oPropDesc in Module1.goPropDescs)
+            //foreach (IDMObjects.PropertyDescription oPropDesc in Module1.goPropDescs)
+            foreach (IPropertyDescription oPropDesc in Module1.goPropDescs)
             {
                 if (oPropDesc.Name.Substring(0, Math.Min(oPropDesc.Name.Length, 2)) != "F_" && (oPropDesc.Name == "UOC" || oPropDesc.Name == "Folio" || oPropDesc.Name == "Contrato" || oPropDesc.Name == "NumCliente" || oPropDesc.Name == "Linea" || oPropDesc.Name == "TipoDoc" || oPropDesc.Name == "FolioS403" || oPropDesc.Name == "Producto" || oPropDesc.Name == "Instrumento" || oPropDesc.Name == "XfolioS" || oPropDesc.Name == "CalificaOnDemand"))
                 {
                     if (Bande == 0)
                     {
                         //IDMListView1.AddColumnHeader(Module1.oLibrary, oPropDesc, Type.Missing, Type.Missing, Type.Missing);
-                        cHeadings.Add(oPropDesc.Label, null, null, null);
+                        cHeadings.Add(oPropDesc.DisplayName, null, null, null);
                         cPropNames.Add(oPropDesc.Name, null, null, null);
                     }
                 }
@@ -401,10 +404,10 @@ namespace DocEntry
                                     {
                                         File.Delete(Module1.TmpImg + "VisalImg.tmp"); 
                                     }
-                                    viewImage1.CloseDocument();
+                                    //viewImage1.CloseDocument();
                                     File.Copy(Module1.XArchivo, Module1.TmpImg + "VisalImg.tmp");
-                                    viewImage1.pArchivo = Module1.TmpImg + "VisalImg.tmp";
-                                    viewImage1.LoadDocument();
+                                    //viewImage1.pArchivo = Module1.TmpImg + "VisalImg.tmp";
+                                    //viewImage1.LoadDocument();
                                     
                                     /*ViewerCtrl1.DocumentFilename = "";
                                     ViewerCtrl1.BeginInit();
@@ -604,19 +607,20 @@ namespace DocEntry
                 Module1.goPropDescs =  ceConnection.getPropertiesDescriptions(Module1.oLibrary, sClasses);
             //On Error Resume Next
             //Module1.oDocument = (IDMObjects.Document)Module1.oLibrary.CreateObject(IDMObjects.idmObjectType.idmObjTypeDocument, sClasses[0], Type.Missing, Type.Missing, Type.Missing);
-            Module1.oDocument = (IDocument) Module1.oLibrary.CreateObject( sClasses[0]);
+            //Module1.oDocument = (IDocument) Module1.oLibrary.CreateObject( sClasses[0]);
+            Module1.oDocument = Factory.Document.CreateInstance(Module1.oLibrary, sClasses[0]); 
             //If Not goPropDescs("Cliente").GetState(idmPropReadOnly) Then
             if (Module1.XFecha.Length > 0)
                 {
                 //Module1.oDocument.Properties[Module1.goPropDescs["FechaOperacion"].Name].Value = Module1.XFecha;
-                Module1.oDocument.Properties.GetProperty("FechaOperacion").SetObjectValue( Module1.XFecha);
+                Module1.oDocument.Properties["FechaOperacion"]=( Module1.XFecha);
             }
                 //if (!Module1.goPropDescs["NumCliente"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtCliente.Text) > 0 && TxtCliente.Text.Trim().Length > 0)
                     {
                     // Module1.oDocument.Properties[Module1.goPropDescs["NumCliente"].Name].Value = TxtCliente.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("NumCliente").SetObjectValue( TxtCliente.Text.Trim());
+                    Module1.oDocument.Properties["NumCliente"]=( TxtCliente.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["Folio"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -624,7 +628,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtFolioUOC.Text) > 0 && TxtFolioUOC.Text.Trim().Length > 0)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["Folio"].Name].Value = TxtFolioUOC.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("Folio").SetObjectValue(TxtFolioUOC.Text.Trim());
+                    Module1.oDocument.Properties["Folio"]=(TxtFolioUOC.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["TipoDoc"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -632,7 +636,7 @@ namespace DocEntry
                     if (CboTipoDoc.SelectedIndex > -1)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["TipoDoc"].Name].Value = Module1.XTipoDoc; //CboTipoDoc.ItemData(CboTipoDoc.ListIndex)
-                    Module1.oDocument.Properties.GetProperty("TipoDoc").SetObjectValue(Module1.XTipoDoc);
+                    Module1.oDocument.Properties["TipoDoc"] =(Module1.XTipoDoc);
                 }
                 }
                 //if (!Module1.goPropDescs["UOC"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -640,7 +644,7 @@ namespace DocEntry
                     if (Conversion.Val(CboUOC.Text) > 0 && CboUOC.Text.Trim().Length > 0)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["UOC"].Name].Value = CboUOC.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("UOC").SetObjectValue(CboUOC.Text.Trim());
+                    Module1.oDocument.Properties["UOC"]=(CboUOC.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["Contrato"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -648,7 +652,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtContrato.Text) > 0 && TxtContrato.Text.Trim().Length > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["Contrato"].Name].Value = TxtContrato.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("Contrato").SetObjectValue(TxtContrato.Text.Trim());
+                    Module1.oDocument.Properties["Contrato"]=(TxtContrato.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["Linea"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -656,7 +660,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtLinea.Text) > 0 && TxtLinea.Text.Trim().Length > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtLinea.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("Linea").SetObjectValue(TxtLinea.Text.Trim());
+                    Module1.oDocument.Properties["Linea"]=(TxtLinea.Text.Trim());
 
                 }
             }
@@ -664,15 +668,15 @@ namespace DocEntry
                 {
                     if (Conversion.Val(TxtFolioS403.Text) > 0 && TxtFolioS403.Text.Trim().Length > 0)
                     {
-                       // Module1.oDocument.Properties[Module1.goPropDescs["FolioS403"].Name].Value = TxtFolioS403.Text.Trim();
-                    Module1.oDocument.Properties.GetProperty("FolioS403").SetObjectValue(TxtFolioS403.Text.Trim());
+                       // Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtFolioS403.Text.Trim();
+                    Module1.oDocument.Properties["Linea"]=(TxtFolioS403.Text.Trim());
 
                 }
             }
                 //if (!Module1.goPropDescs["Status"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     //Module1.oDocument.Properties[Module1.goPropDescs["Status"].Name].Value = 1;
-                Module1.oDocument.Properties.GetProperty("Status").SetObjectValue(1);
+                Module1.oDocument.Properties["Status"]=(1);
 
             }
             //if (!Module1.goPropDescs["Producto"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -680,7 +684,7 @@ namespace DocEntry
                     if (!Convert.IsDBNull(Module1.XProd) && Strings.Len(Module1.XProd) > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["Producto"].Name].Value = Module1.XProd;
-                    Module1.oDocument.Properties.GetProperty("Producto").SetObjectValue(Module1.XProd);
+                    Module1.oDocument.Properties["Producto"]=(Module1.XProd);
 
                 }
             }
@@ -689,7 +693,7 @@ namespace DocEntry
                     if (!Convert.IsDBNull(Module1.XInst) && Strings.Len(Module1.XInst) > 0)
                     {
                        // Module1.oDocument.Properties[Module1.goPropDescs["Instrumento"].Name].Value = Module1.XInst;
-                    Module1.oDocument.Properties.GetProperty("Instrumento").SetObjectValue(Module1.XInst);
+                    Module1.oDocument.Properties["Instrumento"]=(Module1.XInst);
 
                 }
             }
@@ -705,7 +709,7 @@ namespace DocEntry
                     if (!Convert.IsDBNull(Module1.XCalifOnd) && Strings.Len(Module1.XCalifOnd) > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["CalificaOnDemand"].Name].Value = Module1.XCalifOnd;
-                    Module1.oDocument.Properties.GetProperty("CalificaOnDemand").SetObjectValue(Module1.XCalifOnd);
+                    Module1.oDocument.Properties["CalificaOnDemand"]=(Module1.XCalifOnd);
 
                 }
             }
@@ -719,12 +723,14 @@ namespace DocEntry
                     if (Conversion.Val(Module1.XSubFolio) > 0 && Module1.XSubFolio.Trim().Length > 0)
                     {
                        // Module1.oDocument.Properties[Module1.goPropDescs["XfolioP"].Name].Value = Module1.XSubFolio;
-                    Module1.oDocument.Properties.GetProperty("XfolioP").SetObjectValue(Module1.XSubFolio);
+                    Module1.oDocument.Properties["XfolioP"]=(Module1.XSubFolio);
 
                 }
             }
-                //AVG Fin Sept-2015
-                Module1.FinalList[Module1.CurrentDocInx] = Module1.oDocument;
+            //AVG Fin Sept-2015
+
+            Module1.oDocument.Save(FileNet.Api.Constants.RefreshMode.REFRESH);
+               /* Module1.FinalList[Module1.CurrentDocInx] = Module1.oDocument;
                 if (Module1.DocList[Module1.CurrentDocInx].CommitFlag == CommitValues.Commit)
                 {
                     // Changed our mind - decommit
@@ -752,12 +758,12 @@ namespace DocEntry
 
 
                 // Enable the following tabs for editing
-                IDMObjects.idmTabSelect tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectGeneral) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectDocPreview));
+                //IDMObjects.idmTabSelect tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectGeneral) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectDocPreview));
 
                 //Module1.oDocument.SetPropertiesDialogEditMode(tabSel, true);
 
                 // Disable the following tabs for editing
-                tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectSecurity) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectProperties));
+                //tabSel = (IDMObjects.idmTabSelect)(((int)IDMObjects.idmTabSelect.idmTabSelectSecurity) ^ ((int)IDMObjects.idmTabSelect.idmTabSelectProperties));
                 //Module1.oDocument.SetPropertiesDialogEditMode(tabSel, false);
 
                 //*****************************************************************************
@@ -776,6 +782,7 @@ namespace DocEntry
                 //    }
                 //}
                 //BtnNext.Enabled = true;
+                */
         }
 
         private void LoadDocument(int inx)
@@ -1000,11 +1007,11 @@ namespace DocEntry
                 {
                     File.Delete(Module1.TmpImg + "VisalImg.tmp");
                 }
-                viewImage1.CloseDocument();
+                //viewImage1.CloseDocument();
                 File.Copy(Module1.XArchivo, Module1.TmpImg + "VisalImg.tmp");
-                viewImage1.pArchivo = Module1.TmpImg + "VisalImg.tmp";
-                viewImage1.LoadDocument();
-                viewImage1.SetPage(Pags); 
+                //viewImage1.pArchivo = Module1.TmpImg + "VisalImg.tmp";
+                //viewImage1.LoadDocument();
+                //viewImage1.SetPage(Pags); 
                 if (Pags > 1)
                 {
                     if (Pag >= Pags)
@@ -1289,9 +1296,42 @@ namespace DocEntry
             //Fin de cmabio
         }
 
+        private void setHeaderColumnNames()
+        {
+
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font =
+                new Font(dataGridView1.Font, FontStyle.Bold);
+
+            dataGridView1.Location = new Point(8, 8);
+            dataGridView1.Size = new Size(500, 250);
+            dataGridView1.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.ColumnHeadersBorderStyle =
+                DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dataGridView1.GridColor = Color.Black;
+            dataGridView1.RowHeadersVisible = false;
+
+
+            // dataGridView1.Columns[4].DefaultCellStyle.Font =
+            //   new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Italic);
+
+            dataGridView1.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Dock = DockStyle.Fill;
+
+
+
+        }
+
         private void BtnFileNET_Click(Object eventSender, EventArgs eventArgs)
         {
             Collection cHeadings = new Collection();
+            setHeaderColumnNames();
             string sWhere = String.Empty;
             string sClass = String.Empty;
             clsSimpleQuery oQuery = new clsSimpleQuery();
@@ -1306,22 +1346,22 @@ namespace DocEntry
                 //IDMListView2.ClearItems
                 //ViewerCtrl1.Clear();
                 //ShowAnnotations.Value = 0
-                sWhere = "F_DOCTYPE = 'IMAGE'";
-                sWhere = sWhere + " AND F_DOCCLASSNAME = 'ExpedientesDC'";
-                if (Double.Parse(CboUOC.Text) > 0)
+                //sWhere = "F_DOCTYPE = 'IMAGE'";
+                //sWhere = sWhere + " AND F_DOCCLASSNAME = 'ExpedientesDC'";
+                if (CboUOC.Text.Length>0 && Double.Parse(CboUOC.Text) > 0)
                 {
-                    sWhere = sWhere + " AND UOC = '" + CboUOC.Text + "'";
+                    sWhere = sWhere + " AND UOC = " + CboUOC.Text + "";
                 }
                 //Since we're looking at annotations, just grab images
                 if (Conversion.Val(TxtCliente.Text) > 0 && TxtCliente.Text.Trim().Length > 0)
                 {
-                    sWhere = sWhere + " AND NumCliente = '" + TxtCliente.Text + "'";
+                    sWhere = sWhere + " AND NumCliente = " + TxtCliente.Text + "";
                 }
                 if (Conversion.Val(TxtFolioUOC.Text) > 0 && TxtFolioUOC.Text.Trim().Length > 0)
                 {
                     //If XFolio > 0 Then
                     Module1.XFolio = TxtFolioUOC.Text;
-                    sWhere = sWhere + " AND Folio = '" + TxtFolioUOC.Text + "'";
+                    sWhere = sWhere + " AND Folio = " + TxtFolioUOC.Text + "";
                 }
                 if (Conversion.Val(TxtContrato.Text) > 0 && TxtContrato.Text.Trim().Length > 0)
                 {
@@ -1329,7 +1369,7 @@ namespace DocEntry
                 }
                 if (Conversion.Val(TxtLinea.Text) > 0 && TxtLinea.Text.Trim().Length > 0)
                 {
-                    sWhere = sWhere + " AND Linea = '" + TxtLinea.Text + "'";
+                    sWhere = sWhere + " AND Linea = " + TxtLinea.Text + "";
                 }
                 //MsgBox "swhere :" & sWhere
                 sClass = Module1.gfSettings.txtResDocClass.Text;
@@ -1337,15 +1377,17 @@ namespace DocEntry
                 Module1.gcPropNames = new Collection();
                 SetLVHeaders(Module1.gcHeadings, Module1.gcPropNames);
                 //Module1.clsQuery.BindToLib(Module1.oLibrary, Module1.gcHeadings, sClass);
-                ceConnection.executeQuery(Module1.oLibrary, sClass);
+                dataGridView1.Rows.Clear();
+                ceConnection.ExecQuery(ref dataGridView1,sWhere,"",20);
+                
                 Cursor = Cursors.WaitCursor;
 
                 //Module1.clsQuery.ExecQuery(ref this.IDMListView1, sWhere, "", 20, (DocEntry.FormMain)this);
                 //SSPanel2.Visible = False
                 Cursor = Cursors.Arrow;
-                //if (IDMListView1.CountItems() > 0)
+                if (dataGridView1.RowCount > 0)
                 {
-                    Artinsoft.VB6.Gui.SSTabHelper.SetTabEnabled(SSTab1, 1, true);
+                   // Artinsoft.VB6.Gui.SSTabHelper.SetTabEnabled(SSTab1, 1, true);
                     SSTab1.SelectedIndex = 1;
                     BandeInsert = 0;
                     Module1.XArchivo = String.Empty;
@@ -1920,7 +1962,7 @@ namespace DocEntry
                 //ViewerCtrl2.Rotation = (short)RotateAmount;
             }
             //ViewerCtrl1.Rotation = (short)RotateAmount;
-            viewImage1.FlitVertical(); 
+            //viewImage1.FlitVertical(); 
         }
 
         private void BtnRotateLeft_Click(Object eventSender, EventArgs eventArgs)
@@ -1939,7 +1981,7 @@ namespace DocEntry
                 //ViewerCtrl2.Rotation = (short)RotateAmount;
             }
             //ViewerCtrl1.Rotation = (short)RotateAmount;
-            viewImage1.FlitHorizontal(); 
+            //viewImage1.FlitHorizontal(); 
         }
 
         private void BtnSalvar_Click(Object eventSender, EventArgs eventArgs)
@@ -1972,7 +2014,7 @@ namespace DocEntry
                 //ViewerCtrl2.ZoomIn();
             }
             //ViewerCtrl1.ZoomIn();
-            viewImage1.ZoomIn(); 
+            //viewImage1.ZoomIn(); 
         }
 
         private void BtnZoomOut_Click(Object eventSender, EventArgs eventArgs)
@@ -1986,7 +2028,7 @@ namespace DocEntry
                 //ViewerCtrl2.ZoomOut();
             }
             //ViewerCtrl1.ZoomOut();
-            viewImage1.ZoomOut(); 
+            //viewImage1.ZoomOut(); 
         }
 
         private void CboTipoDoc_Click(Object eventSender, EventArgs eventArgs)
@@ -2020,11 +2062,13 @@ namespace DocEntry
 
         private void FormMain_Load(Object eventSender, EventArgs eventArgs)
         {
+            RestoreSettings(false);
+            //Module1.gfSettings.ShowDialog();
             //Dim oLib As New IDMObjects.Library
             //Module1.oLibraries = (IDMObjects.ObjectSet)Module1.oNeighborhood.Libraries;
             //IDMObjects.Library oLib = (IDMObjects.Library)Activator.CreateInstance(Type.GetTypeFromProgID("idmObjects.Library"));
             //oLib.SystemType = IDMObjects.idmSysTypeOptions.idmSysTypeIS;
-            
+
             byte Bande = 0;            
             this.WindowState = FormWindowState.Maximized;
             Module1.DocList[0].fileName = "";
@@ -2063,9 +2107,10 @@ namespace DocEntry
             Llena_Parametros(1);
             //AVG Fin Sept-2015
 
-            string Libreria = Module1.fncParmIniGet("C406090", "FileNET", Module1.DirConf + "C406090.ini");
 
-            if (Libreria == string.Empty)
+            //string Libreria = Module1.fncParmIniGet("C406090", "FileNET", Module1.DirConf + "C406090.ini");
+            string Libreria = Module1.gfSettings.txtIMSLibName.Text;
+            if(Libreria == string.Empty)
             {
                 MessageBox.Show(this, "No se encuentra el archivo de inicio de FileNET", Application.ProductName);
                 oLib = null;
@@ -2088,18 +2133,18 @@ namespace DocEntry
             //oLib.SystemType = idmSysTypeIS
             //Set oLib = oNeighborhood.DefaultLibrary     'Toma la librería default
 
-            int Count = (int)Module1.oLibraries.Count;
+            //int Count = (int)Module1.oLibraries.Count;
 
-            for (int i = 1; i <= Count; i++)
+            //for (int i = 1; i <= Count; i++)
             {
-                if ((((IDMObjects.Library)Module1.oLibraries[i]).Name) == "DefaultIMS:" + Libreria)
+               // if ((((IDMObjects.Library)Module1.oLibraries[i]).Name) == "DefaultIMS:" + Libreria)
                 {
                     Bande = 1;
                     //oLib = (IDMObjects.Library)Module1.oLibraries[i];
-                    ceConnection.EstablishCredentials(Module1.gfSettings.txtIMSLibName.Text, Module1.gfSettings.txtIMSPassword.Text,
+                    ceConnection.EstablishCredentials(Module1.gfSettings.txtIMSUser.Text, Module1.gfSettings.txtIMSPassword.Text,
                         Module1.gfSettings.textResUrl.Text, Module1.gfSettings.txtIMSLibName.Text);
                     oLib = ceConnection.FetchOS(Libreria);
-                    break;
+                   // break;
                 }
             }
 
@@ -2122,7 +2167,7 @@ namespace DocEntry
             }
             //MyLogon(oLib); // Hace LOGON a librería
             //if (!(oLib.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn)))
-            if (oLib==null || oLib.GetConnection()!=null)
+            if (oLib==null || oLib.GetConnection()==null)
             {
                 MessageBox.Show(this, "Error en logon a librería", Application.ProductName);
                 Module1.gbISLogOff = false;
@@ -2137,12 +2182,14 @@ namespace DocEntry
                 Module1.oLibrary = oLib; // Hace la librería global por flexibilidad
             }
 
-            Artinsoft.VB6.Gui.SSTabHelper.SetTabEnabled(SSTab1, 1, false);
+            //Artinsoft.VB6.Gui.SSTabHelper.SetTabEnabled(SSTab1, 1, false);
 
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Application.ExecutablePath));
+            //TODO JV
             Llena_TipoDocto();
 
             //AVG Ini 25-04-2012
+            //TODO JV
             Llena_UOCs();
             //AVG Fin 25-04-2012
 
@@ -2629,9 +2676,9 @@ namespace DocEntry
         }
 
   
-        private void MyLogon(IDMObjects.Library oLibrary)
+        private void MyLogon(IObjectStore oLibrary)
         {
-            try
+            /*try
             { // Enable error-handling routine.
                 if (!(oLibrary.GetState(IDMObjects.idmLibraryState.idmLibraryLoggedOn)))
                 {
@@ -2648,6 +2695,7 @@ namespace DocEntry
                 //Print #1, "Librería no disponible : "; Time; Err.Description & Err.Number				
                 //MsgBox Err.Description & Err.Number
             }
+            */
         }
 
         private void Llena_Parametros(byte opc)
@@ -2807,6 +2855,8 @@ namespace DocEntry
         {
             //Computer MyComputer = new Computer();
             //MyComputer.FileSystem.CurrentDirectory = Module1.HomeDirectory + "\\ReadQR";
+            //TODO enable add libs required!
+
             //ReadQR.Program.TipoConvPDF = ReadQR.Program.ArchivePDFtoArchiveTiff;            
             //ReadQR.Program.RutaAppWork = Module1.HomeDirectory + "\\ReadQR";
             //ReadQR.Program.MuestraForma();            
@@ -2936,6 +2986,94 @@ namespace DocEntry
             }
 
             return result;
+        }
+
+        public void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            string Cade1 = String.Empty;
+            string Cade = String.Empty;
+            string cade2 = String.Empty;
+            byte PosPunto = 0;
+            if (dataGridView1.SelectedRows.Count > 0)
+            //if (IDMListView1.SelectedItem != null)
+            {
+                //Module1.oDocument = (IDMObjects.Document)IDMListView1.SelectedItem;
+                FileNet.Api.Property.PropertyFilter pf = new FileNet.Api.Property.PropertyFilter();
+                pf.AddIncludeProperty(new FileNet.Api.Property.FilterElement(null, null, null, "VersionSeries Name", null));
+
+                Module1.oDocument = Factory.Document.FetchInstance(Module1.oLibrary, (dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), pf);
+                BtnPrint.Enabled = true;
+                String vsId = Module1.oDocument.VersionSeries.Id.ToString();
+                //ViewerCtrl1.Document = Module1.oDocument;
+
+                if (MessageBox.Show(this, "Desea Editar la Imagen Seleccionada ?", Application.ProductName, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //Cade = Module1.oDocument.GetCachedFile(0, "", null);
+                    /*cade2 = Cade;
+                    Cade1 = Module1.GetFileName(ref cade2);
+                    PosPunto = (byte)Cade1.IndexOf(".FOB");
+                    Cade1 = Module1.TmpImg + Cade1.Substring(0, Math.Min(Cade1.Length, PosPunto)) + ".tif";
+                    if (File.Exists(Cade1))
+                    {
+                        try
+                        {
+                            File.Delete(Cade1);
+                        }
+                        catch { }
+                    }
+                    // Copia el archivo de cache a Ubicacion de trabajo
+                    try
+                    {
+                        File.Copy(Cade, Cade1, true);
+                    }
+                    catch { }
+                    //ViewerCtrl1.Brightness = (IDMViewerCtrl.idmBrightness)IDMObjects.idmBrightness.idmBrightnessDarker;
+                    //ViewerCtrl1.Rotation = 0;
+                    Module1.XArchivo = Cade1;
+                    LoadFiles(2);
+                    BandeInsert = 0;
+                    LoadFiles(1);
+                    LoadFiles(5);
+                    Module1.oDocument.Delete();
+                    if (File.Exists(Cade1))
+                    {
+                        try
+                        {
+                            File.Delete(Cade1);
+                        }
+                        catch { }
+                    }
+                    return;
+
+                    //if (Module1.TotalDocs > 0)
+                    //{                       
+                    //    int tempRefParam = 0;
+                    //    LoadDocument(tempRefParam);
+                    //    BtnPrevious.Enabled = false;
+                    //    NavForward = true;
+                    //    BtnNext.Enabled = Module1.TotalDocs > 1;
+                    //    BtnDone.Enabled = true;
+                    //    BtnDeletePage.Enabled = true;
+                    //}
+                    //else
+                    //{
+                    //    ViewerCtrl1.Document = null;
+                    //    BtnDeletePage.Enabled = false;
+                    //}
+                    */
+                    viewer.getBrowser().Navigate(Module1.gfSettings.textWorkplace.Text + "&alwaysShowPDFAnnotations=false&vsId=" + vsId + "&repositoryId=" + Module1.gfSettings.txtIMSLibName.Text + "&docid=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    viewer.ShowDialog(this);
+                }
+            }
+            //else
+            {
+                BtnPrint.Enabled = false;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1_SelectionChanged(sender, e);
         }
         //AVG Fin Sept-2015
     }

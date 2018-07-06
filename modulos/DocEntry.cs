@@ -33,7 +33,7 @@ namespace DocEntry
         
         //public class ExitEnvironmentException : Exception { }
 
-        public const IDMObjects.idmLibraryLogon dmLogonOptNoUI = 0; // Do not display a user interface.
+        public const int dmLogonOptNoUI = 0; // Do not display a user interface.
         public const int idmLogonOptServerNetworkNoUI = 16; // (&H10)   Log on in server mode and use network logon credentials; do not display a user interface.
         public const int idmLogonOptServerNoUI = 8; // Log on in server mode; do not display a user interface.
         public const int idmLogonOptUseNetworkNoUI = 2; // Use network logon credentials; do not display a user interface.
@@ -63,6 +63,7 @@ namespace DocEntry
             }
         }
 
+        /*
         static private IDMObjects.Neighborhood _oNeighborhood;
         static public IDMObjects.Neighborhood oNeighborhood
         {
@@ -93,6 +94,7 @@ namespace DocEntry
                 _oLibraries = value;
             }
         }
+        */
 
         //static private IDMObjects.Document _oDocument;
         static private IDocument _oDocument;
@@ -305,6 +307,7 @@ namespace DocEntry
             }*/
         }
 
+        /*
         static public string FormatDataType(IDMObjects.idmTypeID TypeID)
         {
             switch (TypeID)
@@ -352,7 +355,7 @@ namespace DocEntry
             }
             return "";
         }
-
+        */
         
         /*static int counter = 0;
         public static void Mostrar(String args)
@@ -581,7 +584,8 @@ namespace DocEntry
             ValidaRegistry("C406_000", "DirLog", "Logs\\");
             DirLog = DirWork + LeeRegistry("C406_000", "DirLog");
             ValidaRegistry("C406_000", "DirConf", "Conf\\");
-            DirConf = DirWork + LeeRegistry("C406_000", "DirConf");            
+            DirConf = "C:/Users/jg04349/Desktop/Documentos FileNet/Desarrollos/conf/";
+            //DirConf = DirWork + LeeRegistry("C406_000", "DirConf");            
             ValidaRegistry("C406_000", "TmpImg", "TmpImg\\");
             TmpImg = DirWork + LeeRegistry("C406_000", "TmpImg");
             //AVG Ini 14-01/2010

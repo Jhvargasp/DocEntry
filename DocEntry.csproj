@@ -73,10 +73,6 @@
       <HintPath>..\CreditoEmpresarial\OperaNET\API.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Artinsoft.VB6, Version=2.1.3125.32454, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\C406_020\DataLayer\bin\Debug\Artinsoft.VB6.dll</HintPath>
-    </Reference>
     <Reference Include="AxInterop.AdminLibCtl">
       <HintPath>obj\Release\AxInterop.AdminLibCtl.dll</HintPath>
     </Reference>
@@ -84,9 +80,6 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>obj\Debug\AxInterop.ComCtl2.dll</HintPath>
-    </Reference>
-    <Reference Include="AxInterop.ScanLibCtl">
-      <HintPath>obj\Release\AxInterop.ScanLibCtl.dll</HintPath>
     </Reference>
     <Reference Include="FileNet.Api, Version=5.0.0.0, Culture=neutral, PublicKeyToken=63fc2fb3fdeef4f1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -165,6 +158,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
@@ -218,6 +212,12 @@
       <SubType>Code</SubType>
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="formas\Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formas\Viewer.Designer.cs">
+      <DependentUpon>Viewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulos\CEConnection.cs" />
     <Compile Include="modulos\DocEntry.cs">
       <SubType>Code</SubType>
@@ -239,6 +239,9 @@
     <EmbeddedResource Include="formas\frmSettings.resX">
       <DependentUpon>frmSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formas\Viewer.resx">
+      <DependentUpon>Viewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>

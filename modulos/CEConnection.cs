@@ -11,7 +11,8 @@ using FileNet.Api.Util;
 using FileNet.Api.Authentication;
 using FileNet.Api.Meta;
 using static FileNet.Api.Core.Factory;
-
+using System.Windows.Forms;
+using FileNet.Api.Query;
 
 namespace DocEntry.modulos
 {
@@ -40,6 +41,7 @@ namespace DocEntry.modulos
         // Once credentials are established, you can make API calls to CE.
         //
         IObjectStore os;
+        IRepositoryRowSet oRS = null;
         public void EstablishCredentials(String userName, String password, String uri, String osName)
         {
             //IConnection  conn = Factory.Connection.GetConnection(uri);
@@ -148,10 +150,130 @@ namespace DocEntry.modulos
             return ret;
         }
 
-        internal void executeQuery(IObjectStore oLibrary, string sClass)
+        public void ExecQuery(ref DataGridView IDMLView, string sWhereClause, string sFolderName, int iMaxRows)//AxIDMListView.AxIDMListView
         {
-            throw new NotImplementedException();
+
+            if (os != null)
+            {
+                // Build the string necessary to bind to the database connection
+                //sConnect = "provider=FnDBProvider;data source=" + oQueryLib.Name + ";Prompt=4;SystemType=" + ((int)oQueryLib.SystemType) + ";";
+                // Build the query string
+
+                String mySQLString = "SELECT * FROM ExpedientesDC  ";
+                //String mySQLString = "SELECT * FROM Document  ";
+                SearchSQL sqlObject = new SearchSQL();
+
+
+                // The SearchSQL instance (sqlObject) can then be specified in the 
+                // SearchScope parameter list to execute the search. Uses fetchRows to test the SQL 
+                // statement.
+                SearchScope searchScope = new SearchScope(os);
+                String sQuery = "";
+                if (sWhereClause.Length > 0)
+                {
+                    sQuery = "";
+                    sQuery = sQuery + "WHERE VersionStatus=1 " + sWhereClause;
+                    //sQuery = sQuery + "WHERE VersionStatus=1 ";
+                }
+
+                // Set up the properties on the record set
+                //if (oRS != null)
+                //{
+                oRS = null;
+                //}
+                //Set oMiBD = New ADODB.Connection
+                //oMiBD.ConnectionString = sConnect
+                //oMiBD.Open
+                //oRS = new ADODB.Recordset();
+
+                //oRS.let_ActiveConnection(sConnect);
+                //oRS.Properties["SupportsObjSet"].Value = true;
+                if (iMaxRows > 0)
+                {
+                    //searchScope.
+                    //oRS.MaxRecords = iMaxRows;
+                    sQuery = sQuery + " OPTIONS ( BATCHSIZE " + iMaxRows + " )";
+                }
+                //oRS.Properties["SearchFolderName"].Value = sFolderName;
+                // All set up - pull the trigger
+                //oRS.LockType = ADODB.LockTypeEnum.adLockOptimistic;
+                //oRS.Open sQuery, oMiBD, adOpenKeyset, , adCmdText
+                //oRS.Open sQuery, oMiBD, adOpenKeyset
+                //oRS.Open(sQuery, Type.Missing, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockUnspecified, -1);
+
+                try
+                {
+                    //MessageBox.Show("Query: " + mySQLString + sQuery);
+                    sqlObject.SetQueryString(mySQLString + sQuery);
+                    //sqlObject.SetQueryString(mySQLString);
+                    oRS = searchScope.FetchRows(sqlObject, null, null, true);
+
+                    if (!oRS.IsEmpty()) { 
+                        ShowResults(ref IDMLView);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay resultados para la consulta indicada: " + mySQLString + sQuery);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Must set library!", Application.ProductName);
+            }
+        }
+
+        private void ShowResults(ref DataGridView iDMLView)
+        {
+            if (!oRS.IsEmpty())
+            {
+                int i = 0;
+                try
+                {
+                    foreach (IRepositoryRow row in oRS)
+                    {
+
+
+                        string[] rowData = { row.Properties.GetProperty("Id").GetIdValue().ToString(),
+                       row.Properties.GetProperty("XfolioP").GetStringValue(),
+                    row.Properties.GetProperty("FolioS403").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("SecLote").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Instrumento").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Producto").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("XfolioS").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("CalificaOnDemand").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("FechaOperacion").GetDateTimeValue().ToString(),
+                    row.Properties.GetProperty("StatusImagen").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Status").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Linea").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Contrato").GetStringValue(),
+                    row.Properties.GetProperty("NumCliente").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("Folio").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("TipoDoc").GetInteger32Value().ToString(),
+                    row.Properties.GetProperty("UOC").GetInteger32Value().ToString()
+                    
+                    //row.Properties.GetProperty("DocumentTitle").GetStringValue()
+                            };
+                        if (i > 20)
+                        {
+                            break;
+                        }
+                        i++;
+                        iDMLView.Rows.Add(rowData);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
+
+
 
 }
