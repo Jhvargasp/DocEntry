@@ -303,6 +303,7 @@ namespace DocEntry
             this.BtnInsertPag.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ToolTip1.SetToolTip(this.BtnInsertPag, "Insertar Páginas");
             this.BtnInsertPag.UseVisualStyleBackColor = false;
+            this.BtnInsertPag.Visible = false;
             this.BtnInsertPag.Click += new System.EventHandler(this.BtnInsertPag_Click);
             // 
             // BtnDeletePage
@@ -320,6 +321,7 @@ namespace DocEntry
             this.BtnDeletePage.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ToolTip1.SetToolTip(this.BtnDeletePage, "Borrar Página");
             this.BtnDeletePage.UseVisualStyleBackColor = false;
+            this.BtnDeletePage.Visible = false;
             this.BtnDeletePage.Click += new System.EventHandler(this.BtnDeletePage_Click);
             // 
             // BtnZoomOut
@@ -337,6 +339,7 @@ namespace DocEntry
             this.BtnZoomOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ToolTip1.SetToolTip(this.BtnZoomOut, "Zoom Out");
             this.BtnZoomOut.UseVisualStyleBackColor = false;
+            this.BtnZoomOut.Visible = false;
             this.BtnZoomOut.Click += new System.EventHandler(this.BtnZoomOut_Click);
             // 
             // BtnZoomIn
@@ -354,6 +357,7 @@ namespace DocEntry
             this.BtnZoomIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ToolTip1.SetToolTip(this.BtnZoomIn, "Zoom In");
             this.BtnZoomIn.UseVisualStyleBackColor = false;
+            this.BtnZoomIn.Visible = false;
             this.BtnZoomIn.Click += new System.EventHandler(this.BtnZoomIn_Click);
             // 
             // BtnNext
@@ -789,6 +793,7 @@ namespace DocEntry
             this.BtnCancelar.TabIndex = 15;
             this.BtnCancelar.Text = "Cancel";
             this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Visible = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnOkInserta
@@ -805,6 +810,7 @@ namespace DocEntry
             this.BtnOkInserta.TabIndex = 14;
             this.BtnOkInserta.Text = "OK";
             this.BtnOkInserta.UseVisualStyleBackColor = false;
+            this.BtnOkInserta.Visible = false;
             this.BtnOkInserta.Click += new System.EventHandler(this.BtnOkInserta_Click);
             // 
             // BtnRotate
@@ -821,6 +827,7 @@ namespace DocEntry
             this.BtnRotate.TabIndex = 3;
             this.BtnRotate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnRotate.UseVisualStyleBackColor = false;
+            this.BtnRotate.Visible = false;
             this.BtnRotate.Click += new System.EventHandler(this.BtnRotate_Click);
             // 
             // BtnRotateLeft
@@ -837,6 +844,7 @@ namespace DocEntry
             this.BtnRotateLeft.TabIndex = 1;
             this.BtnRotateLeft.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnRotateLeft.UseVisualStyleBackColor = false;
+            this.BtnRotateLeft.Visible = false;
             this.BtnRotateLeft.Click += new System.EventHandler(this.BtnRotateLeft_Click);
             // 
             // LblMsg

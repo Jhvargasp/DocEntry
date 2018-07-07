@@ -24,6 +24,7 @@ using FileNet.Api.Meta;
 using static FileNet.Api.Core.Factory;
 using DocEntry.modulos;
 using DocEntry.formas;
+using FileNet.Api.Constants;
 //using ReadQR;
 
 
@@ -327,6 +328,7 @@ namespace DocEntry
                                 Module1.XArchivo = Module1.TmpImg + "img2.tif";
                             }
                             */
+                            Module1.XArchivo = Module1.TmpImg + "img2.tif";
                             if (File.Exists(Module1.XArchivo))
                             {                                
                                 try { File.Delete(Module1.XArchivo); }
@@ -613,14 +615,14 @@ namespace DocEntry
             if (Module1.XFecha.Length > 0)
                 {
                 //Module1.oDocument.Properties[Module1.goPropDescs["FechaOperacion"].Name].Value = Module1.XFecha;
-                Module1.oDocument.Properties["FechaOperacion"]=( Module1.XFecha);
+                Module1.oDocument.Properties["FechaOperacion"] = DateTime.Parse( Module1.XFecha);
             }
                 //if (!Module1.goPropDescs["NumCliente"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (Conversion.Val(TxtCliente.Text) > 0 && TxtCliente.Text.Trim().Length > 0)
                     {
                     // Module1.oDocument.Properties[Module1.goPropDescs["NumCliente"].Name].Value = TxtCliente.Text.Trim();
-                    Module1.oDocument.Properties["NumCliente"]=( TxtCliente.Text.Trim());
+                    Module1.oDocument.Properties["NumCliente"]= int.Parse( TxtCliente.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["Folio"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -628,7 +630,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtFolioUOC.Text) > 0 && TxtFolioUOC.Text.Trim().Length > 0)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["Folio"].Name].Value = TxtFolioUOC.Text.Trim();
-                    Module1.oDocument.Properties["Folio"]=(TxtFolioUOC.Text.Trim());
+                    Module1.oDocument.Properties["Folio"]= int.Parse(TxtFolioUOC.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["TipoDoc"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -636,7 +638,7 @@ namespace DocEntry
                     if (CboTipoDoc.SelectedIndex > -1)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["TipoDoc"].Name].Value = Module1.XTipoDoc; //CboTipoDoc.ItemData(CboTipoDoc.ListIndex)
-                    Module1.oDocument.Properties["TipoDoc"] =(Module1.XTipoDoc);
+                    Module1.oDocument.Properties["TipoDoc"] = (Module1.XTipoDoc);
                 }
                 }
                 //if (!Module1.goPropDescs["UOC"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -644,7 +646,9 @@ namespace DocEntry
                     if (Conversion.Val(CboUOC.Text) > 0 && CboUOC.Text.Trim().Length > 0)
                     {
                     //Module1.oDocument.Properties[Module1.goPropDescs["UOC"].Name].Value = CboUOC.Text.Trim();
-                    Module1.oDocument.Properties["UOC"]=(CboUOC.Text.Trim());
+                    Module1.oDocument.Properties["UOC"]= int.Parse(CboUOC.Text.Trim());
+                    //remove hardcoded
+                    //Module1.oDocument.Properties["UOC"] = 1;
                 }
                 }
                 //if (!Module1.goPropDescs["Contrato"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -652,7 +656,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtContrato.Text) > 0 && TxtContrato.Text.Trim().Length > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["Contrato"].Name].Value = TxtContrato.Text.Trim();
-                    Module1.oDocument.Properties["Contrato"]=(TxtContrato.Text.Trim());
+                    Module1.oDocument.Properties["Contrato"]= (TxtContrato.Text.Trim());
                 }
                 }
                 //if (!Module1.goPropDescs["Linea"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -660,7 +664,7 @@ namespace DocEntry
                     if (Conversion.Val(TxtLinea.Text) > 0 && TxtLinea.Text.Trim().Length > 0)
                     {
                         //Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtLinea.Text.Trim();
-                    Module1.oDocument.Properties["Linea"]=(TxtLinea.Text.Trim());
+                    Module1.oDocument.Properties["Linea"]= int.Parse(TxtLinea.Text.Trim());
 
                 }
             }
@@ -668,8 +672,8 @@ namespace DocEntry
                 {
                     if (Conversion.Val(TxtFolioS403.Text) > 0 && TxtFolioS403.Text.Trim().Length > 0)
                     {
-                       // Module1.oDocument.Properties[Module1.goPropDescs["Linea"].Name].Value = TxtFolioS403.Text.Trim();
-                    Module1.oDocument.Properties["Linea"]=(TxtFolioS403.Text.Trim());
+                    // Module1.oDocument.Properties[Module1.goPropDescs["FolioS403"].Name].Value = TxtFolioS403.Text.Trim();
+                    Module1.oDocument.Properties["FolioS403"] = int.Parse(TxtFolioS403.Text.Trim());
 
                 }
             }
@@ -683,9 +687,10 @@ namespace DocEntry
             {
                     if (!Convert.IsDBNull(Module1.XProd) && Strings.Len(Module1.XProd) > 0)
                     {
-                        //Module1.oDocument.Properties[Module1.goPropDescs["Producto"].Name].Value = Module1.XProd;
-                    Module1.oDocument.Properties["Producto"]=(Module1.XProd);
-
+                    //Module1.oDocument.Properties[Module1.goPropDescs["Producto"].Name].Value = Module1.XProd;
+                    Module1.oDocument.Properties["Producto"]=int.Parse(Module1.XProd.ToString());
+                    //remove hardcoded
+                    //Module1.oDocument.Properties["Producto"] = 1;
                 }
             }
                 //if (!Module1.goPropDescs["Instrumento"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
@@ -693,7 +698,9 @@ namespace DocEntry
                     if (!Convert.IsDBNull(Module1.XInst) && Strings.Len(Module1.XInst) > 0)
                     {
                        // Module1.oDocument.Properties[Module1.goPropDescs["Instrumento"].Name].Value = Module1.XInst;
-                    Module1.oDocument.Properties["Instrumento"]=(Module1.XInst);
+                    Module1.oDocument.Properties["Instrumento"]=int.Parse(Module1.XInst.ToString());
+                    //remove hardcoded
+                    //Module1.oDocument.Properties["Instrumento"] = 1;
 
                 }
             }
@@ -701,15 +708,19 @@ namespace DocEntry
                 {
                     if (!Convert.IsDBNull(Module1.XFile) && Strings.Len(Module1.XFile) > 0)
                     {
-                        //oDocument.Properties(goPropDescs("XfilioS").Name).Value = XFile
-                    }
+                    Module1.oDocument.Properties["XfolioS"] = int.Parse(Module1.XFile.ToString());
+                    //remove hardcoded
+                    //Module1.oDocument.Properties["XfolioS"] = 1;
                 }
+            }
                 //if (!Module1.goPropDescs["CalificaOnDemand"].GetState(IDMObjects.idmPropDescState.idmPropReadOnly))
                 {
                     if (!Convert.IsDBNull(Module1.XCalifOnd) && Strings.Len(Module1.XCalifOnd) > 0)
                     {
-                        //Module1.oDocument.Properties[Module1.goPropDescs["CalificaOnDemand"].Name].Value = Module1.XCalifOnd;
-                    Module1.oDocument.Properties["CalificaOnDemand"]=(Module1.XCalifOnd);
+                    //Module1.oDocument.Properties[Module1.goPropDescs["CalificaOnDemand"].Name].Value = Module1.XCalifOnd;
+                    Module1.oDocument.Properties["CalificaOnDemand"]=int.Parse(Module1.XCalifOnd.ToString());
+                    //remove hardcoded
+                    //Module1.oDocument.Properties["CalificaOnDemand"] = 1;
 
                 }
             }
@@ -724,12 +735,37 @@ namespace DocEntry
                     {
                        // Module1.oDocument.Properties[Module1.goPropDescs["XfolioP"].Name].Value = Module1.XSubFolio;
                     Module1.oDocument.Properties["XfolioP"]=(Module1.XSubFolio);
+                    //TODO remove hardcoded value
+                    //Module1.oDocument.Properties["XfolioP"] = "xFoliop";
 
                 }
             }
+
+            //missing props
+            Module1.oDocument.Properties["SecLote"] = 1;
+            Module1.oDocument.Properties["StatusImagen"] = 1;
+
             //AVG Fin Sept-2015
 
-            Module1.oDocument.Save(FileNet.Api.Constants.RefreshMode.REFRESH);
+            try
+            {
+                Module1.oDocument.Properties["DocumentTitle"] = "DocEntryFilenet";
+                Module1.oDocument.MimeType = "image/tiff";
+               
+                    IContentElementList cel = ceConnection.CreateContentElementList(CommonDialog1.FileName);
+                if (cel != null)
+                {
+                    Module1.oDocument.ContentElements = cel;
+                }
+                    Module1.oDocument.Save(FileNet.Api.Constants.RefreshMode.REFRESH);
+                    String folder = "/FolderTest";
+                    IReferentialContainmentRelationship rcr = ceConnection.FileContainable(Module1.oDocument, folder);
+                    rcr.Save(RefreshMode.REFRESH);
+                    ceConnection.checkInDoc(Module1.oDocument);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
                /* Module1.FinalList[Module1.CurrentDocInx] = Module1.oDocument;
                 if (Module1.DocList[Module1.CurrentDocInx].CommitFlag == CommitValues.Commit)
                 {
@@ -1067,11 +1103,11 @@ namespace DocEntry
 
             //this.Visible = false;  
           
-            /*Module1.CommitForm.Animation1.Open(Module1.HomeDirectory + "\\commit.avi");
+            //Module1.CommitForm.Animation1.Open(Module1.HomeDirectory + "\\commit.avi");
             Module1.CommitForm.Show();
             Module1.CommitForm.txtMin.Text = "0";
             Module1.CommitForm.txtMax.Text = ((int)(CommitValues.Commit)).ToString();
-            Module1.CommitForm.Activate();*/
+            Module1.CommitForm.Activate();
 
             LblMsg.Visible = true;
             LblMsg.Text = "Espere por favor .... Preparando Imágen";
@@ -2419,7 +2455,7 @@ namespace DocEntry
         {
             Application.DoEvents();
             Application.DoEvents();
-            //ImgAdmin1.Image = string.Empty;
+            ImgAdmin1.Image = string.Empty;
             //ImgScan1.Image = string.Empty;
             if (BandeInsert == 0)
             {
@@ -2449,7 +2485,7 @@ namespace DocEntry
                 }
                 catch { }
             }
-            /*
+            
             ImgScan1.ShowSelectScanner();
             ImgScan1.OpenScanner();
 
@@ -2460,8 +2496,8 @@ namespace DocEntry
             try
             {
                 ImgScan1.StartScan();
-            } < catch { }
-            */
+            }  catch { }
+            
         }
 
         private void TxtCliente_TextChanged(Object eventSender, EventArgs eventArgs)
@@ -2960,7 +2996,7 @@ namespace DocEntry
                     }
                 }
                 catch {}
-                File.Copy(Module1.XArchivo, saveFileDialog1.FileName);
+                File.Copy(ceConnection.GetContentElement(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), saveFileDialog1.FileName);
                 MessageBox.Show(this, "Archivo copiado : " + saveFileDialog1.FileName, Application.ProductName);
             }
         }
@@ -3061,6 +3097,7 @@ namespace DocEntry
                     //    BtnDeletePage.Enabled = false;
                     //}
                     */
+                    LoadDocument(0);
                     viewer.getBrowser().Navigate(Module1.gfSettings.textWorkplace.Text + "&alwaysShowPDFAnnotations=false&vsId=" + vsId + "&repositoryId=" + Module1.gfSettings.txtIMSLibName.Text + "&docid=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                     viewer.ShowDialog(this);
                 }

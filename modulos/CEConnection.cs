@@ -13,6 +13,7 @@ using FileNet.Api.Meta;
 using static FileNet.Api.Core.Factory;
 using System.Windows.Forms;
 using FileNet.Api.Query;
+using FileNet.Api.Constants;
 
 namespace DocEntry.modulos
 {
@@ -271,7 +272,128 @@ namespace DocEntry.modulos
                     MessageBox.Show(ex.Message);
                 }
             }
+
+
         }
+
+        public String GetContentElement(String id)
+        {
+
+            //MessageBox.Show(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            //FileNet.Api.Property.PropertyFilter pf = new FileNet.Api.Property.PropertyFilter();
+            //pf.AddIncludeProperty(new FileNet.Api.Property.FilterElement(null, null, null, "Cont", null));
+
+            // Get a document from the version series to be checked for downloads.
+            IDocument documentObj = Factory.Document.FetchInstance(os, id, null);
+
+            IContentTransfer cTransfer = (IContentTransfer)documentObj.ContentElements[0];
+
+            String name = cTransfer.RetrievalName;
+            Stream stream = cTransfer.AccessContentStream();
+            double size = writeContent(stream, Path.GetTempPath() + "/" + name);
+
+            return Path.GetTempPath() + "/" + name;
+        }
+
+        private double writeContent(Stream stream, string name)
+        {
+            byte[] buffer = new byte[4096];
+            int bufferSize;
+            double size = 0;
+            BinaryWriter wr = new BinaryWriter(File.Open(name, FileMode.Create));
+            while ((bufferSize = stream.Read(buffer, 0, buffer.Length)) != 0)
+            {
+                size += bufferSize;
+                wr.Write(buffer, 0, bufferSize);
+            }
+            wr.Close();
+            stream.Close();
+            return size;
+        }
+
+        //
+        // Files the Containable object (i.e. Document, CustomObject) in
+        // specified Folder.
+        //
+        public  IReferentialContainmentRelationship FileContainable( IContainable c, String folder)
+        {
+            IFolder f = Factory.Folder.FetchInstance(os, folder, null);
+            IReferentialContainmentRelationship rcr = null;
+            if (c is IDocument)
+                rcr = f.File((IDocument)c, AutoUniqueName.AUTO_UNIQUE, "DocEntryFile", DefineSecurityParentage.DO_NOT_DEFINE_SECURITY_PARENTAGE);
+            else
+                rcr = f.File((ICustomObject)c, AutoUniqueName.AUTO_UNIQUE, "DocEntryFile", DefineSecurityParentage.DO_NOT_DEFINE_SECURITY_PARENTAGE);
+            return rcr;
+        }
+
+        public void checkInDoc(IDocument doc)
+        {
+            doc.Checkin(AutoClassify.AUTO_CLASSIFY, CheckinType.MINOR_VERSION);
+            doc.Save(RefreshMode.REFRESH);
+            doc.Refresh();
+        }
+
+        //
+        // Creates the ContentTransfer object from supplied file's
+        // content.
+        //
+        public IContentTransfer CreateContentTransfer(String fileName)
+        {
+            IContentTransfer ct = null;
+            FileInfo fi = new FileInfo(fileName);
+            if (ReadContentFromFile(fileName) != null)
+            {
+                ct = Factory.ContentTransfer.CreateInstance();
+                Stream s = new MemoryStream(ReadContentFromFile(fileName));
+                ct.SetCaptureSource(s);
+                ct.RetrievalName = fi.Name;
+            }
+            return ct;
+        }
+
+        //
+        // Creates the ContentElementList from ContentTransfer object.
+        //
+        public  IContentElementList CreateContentElementList(String fileName)
+        {
+            IContentElementList cel = null;
+            if (CreateContentTransfer(fileName) != null)
+            {
+                cel = Factory.ContentElement.CreateList();
+                IContentTransfer ct = CreateContentTransfer(fileName);
+                cel.Add(ct);
+            }
+            return cel;
+        }
+
+        //
+        // Reads the content from a file and stores it
+        // in a byte array. The byte array will later be
+        // used to create ContentTransfer object.
+        //
+        public byte[] ReadContentFromFile(String fileName)
+        {
+            FileInfo fi = new FileInfo(fileName);
+            long numBytes = fi.Length;
+            byte[] buffer = null;
+            if (numBytes > 0)
+            {
+                try
+                {
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    buffer = br.ReadBytes((int)numBytes);
+                    br.Close();
+                    fs.Close();
+                }
+                catch (Exception e)
+                {
+                    System.Console.WriteLine(e.StackTrace);
+                }
+            }
+            return buffer;
+        }
+
     }
 
 
