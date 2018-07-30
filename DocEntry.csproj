@@ -191,6 +191,7 @@
     <Compile Include="Clases\clsSimpleQuery.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Clases\Tools.cs" />
     <Compile Include="formas\DocEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +254,7 @@
     </Content>
     <Content Include="DocEntryInputCenter.ico" />
     <None Include="app.config" />
+    <None Include="DataConnectionFNet.ini" />
     <None Include="_UpgradeReport.htm">
       <SubType>Preview</SubType>
     </None>

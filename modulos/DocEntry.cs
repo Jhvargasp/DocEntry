@@ -855,14 +855,19 @@ namespace DocEntry
         {
             string theResult = String.Empty;
             string @Default = "";
-            string result = new String(' ', 255);
-            int rc = (int)1;//API.KERNEL.GetPrivateProfileString(stanza, keyname, @Default, ref result, result.Length, inifile);
+            byte[] result1 = new byte[255];
+
+            //AIS-91 dvelasco
+            long rc = API.KERNEL.GetPrivateProfileString(stanza, keyname, @Default, result1, result1.Length, Environment.CurrentDirectory + "/" + inifile);
+
+            System.Text.Encoding enc = System.Text.Encoding.ASCII;
+            string myString = enc.GetString(result1);
             if (rc != 0)
             {
-                theResult = result.Trim();
+                theResult = myString.Trim();
                 if (theResult.Length > 1)
                 {
-                    theResult = theResult.Substring(0, Math.Min(theResult.Length, rc));//theResult.Length - 1));
+                    theResult = theResult.Substring(0, Math.Min(theResult.Length, (int)rc));//theResult.Length - 1));
                 }
             }
             else

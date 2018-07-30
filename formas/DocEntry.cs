@@ -25,6 +25,7 @@ using static FileNet.Api.Core.Factory;
 using DocEntry.modulos;
 using DocEntry.formas;
 using FileNet.Api.Constants;
+using DocEntry.Clases;
 //using ReadQR;
 
 
@@ -196,7 +197,15 @@ namespace DocEntry
             bool result = false;
             try
             {
-                RestoreSettings(false);
+                //RestoreSettings(false);
+                Tools t = new Tools();
+                Module1.gfSettings.txtIMSLibName.Text = Module1.fncParmIniGet("FILENET", "txtIMSLibName", "DataConnectionFNet.ini");
+                Module1.gfSettings.txtIMSUser.Text = Module1.fncParmIniGet("FILENET", "txtIMSUser", "DataConnectionFNet.ini");
+                Module1.gfSettings.txtIMSPassword.Text = t.Decrypt(Module1.fncParmIniGet("FILENET", "txtIMSPassword", "DataConnectionFNet.ini"), true);
+                Module1.gfSettings.textResUrl.Text = Module1.fncParmIniGet("FILENET", "textResUrl", "DataConnectionFNet.ini");
+                Module1.gfSettings.txtResDocClass.Text = Module1.fncParmIniGet("FILENET", "txtResDocClass", "DataConnectionFNet.ini");
+                Module1.gfSettings.textWorkplace.Text = Module1.fncParmIniGet("FILENET", "textWorkplace", "DataConnectionFNet.ini");
+
                 // Make sure we have some valid library ID's
                 if (Module1.gfSettings.txtIMSLibName.Text == "")
                 {
@@ -2453,6 +2462,7 @@ namespace DocEntry
 
         private void ImgScan1_ScanStarted(object sender, EventArgs e)
         {
+            /*
             Application.DoEvents();
             Application.DoEvents();
             ImgAdmin1.Image = string.Empty;
@@ -2497,6 +2507,7 @@ namespace DocEntry
             {
                 ImgScan1.StartScan();
             }  catch { }
+            */
             
         }
 
